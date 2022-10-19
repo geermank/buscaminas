@@ -35,6 +35,13 @@ namespace Buscaminas
             this.pictureBox1.Image = Image.FromFile(@"Images\cell_uncovered.png");
         }
 
+        public void Reset()
+        {
+            this.pictureBox1.Image = Image.FromFile(@"Images\cell_uncovered.png");
+            this.labelNumber.Text = "";
+            this.Enabled = true;
+        }
+
         public void ShowFlag()
         {
             this.pictureBox1.Image = Image.FromFile(@"Images\flag_cell.png");
@@ -67,7 +74,7 @@ namespace Buscaminas
         {
             this.pictureBox1.Image = Image.FromFile(@"Images\mine_normal.png");
         }
-
+        
         public void ShowCrossedOutMine()
         {
             this.pictureBox1.Image = Image.FromFile(@"Images\mine_crossed_out.png");

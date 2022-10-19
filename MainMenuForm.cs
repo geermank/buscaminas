@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BuscaminasDomain;
+using BuscaminasDomain.GameRules.Factories;
 
 namespace Buscaminas
 {
@@ -52,6 +53,7 @@ namespace Buscaminas
 
             Form1 gameForm = new Form1();
             gameForm.SetGameDifficulty(gameDifficulty);
+            gameForm.SetGameFactory(new SinglePlayerGameFactory());
             gameForm.Show();
         }
 

@@ -1,5 +1,6 @@
 ﻿using BuscaminasDomain;
 using BuscaminasDomain.GameRules;
+using BuscaminasDomain.GameRules.Factories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace Buscaminas
         private Game game;
         private CellView[,] cellViews;
 
+        private IGameFactory gameFactory;
         private GameDifficulty gameDifficulty;
 
         private int gameDurationInSeconds = 0;
@@ -26,9 +28,14 @@ namespace Buscaminas
             InitializeComponent();
         }
 
-        public void SetGameDifficulty(GameDifficulty difficulty)
+        public void SetGameDifficulty(GameDifficulty gameDifficulty)
         {
-            this.gameDifficulty = difficulty;
+            this.gameDifficulty = gameDifficulty;
+        }
+
+        public void SetGameFactory(IGameFactory gameFactory)
+        {
+            this.gameFactory = gameFactory;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -127,16 +134,15 @@ namespace Buscaminas
 
         private void CreateNewGame()
         {
-            cellViews = new CellView[gameDifficulty.Width, gameDifficulty.Height];
-
-            Player p = new Player();
-            game = GameFactory.GetInstance().NewSinglePlayerGame(gameDifficulty, p);
+            // TODO remove this hardcoded player
+            Player player = new Player();
+            game = gameFactory.CreateGame(gameDifficulty, player);
             game.SetGameListener(this);
         }
 
         private void CreateCellViews()
         {
-            panelCellsContainer.Controls.Clear();
+            cellViews = new CellView[gameDifficulty.Width, gameDifficulty.Height];
 
             int cellSize = CellViewConfig.CellSize;
 
@@ -160,6 +166,17 @@ namespace Buscaminas
             }
         }
 
+        private void ResetCellViews()
+        {
+            for (int i = 0; i < gameDifficulty.Width; i++)
+            {
+                for (int j = 0; j < gameDifficulty.Height; j++)
+                {
+                    cellViews[i, j].Reset();
+                }
+            }
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = Image.FromFile(@"Images\smiley_face.png");
@@ -167,7 +184,7 @@ namespace Buscaminas
 
             panelCellsContainer.Enabled = true;
             CreateNewGame();
-            CreateCellViews();
+            ResetCellViews();
 
             gameDurationInSeconds = 0;
             timer1.Start();
