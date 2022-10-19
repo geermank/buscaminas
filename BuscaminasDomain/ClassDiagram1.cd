@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BuscaminasDomain.BoardCell">
+    <Position X="9" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAggAAAIACAAABAAAAAQAAAQgAAAAI=</HashCode>
+      <FileName>Cell\BoardCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.MineCell">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cell\MineCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.NumberCell">
+    <Position X="9" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAgEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cell\NumberCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.EmptyCell">
+    <Position X="11.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cell\EmptyCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.GameBoard.BoardGenerator">
+    <Position X="11.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameBoard\BoardGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.GameDifficulty">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameDifficulty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.GameRules.SinglePlayerGame">
+    <Position X="0.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAE=</HashCode>
+      <FileName>GameRules\SinglePlayerGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.GameRules.MultiPlayerGame">
+    <Position X="3.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAE=</HashCode>
+      <FileName>GameRules\MultiPlayerGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.Turn">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Turn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.Player">
+    <Position X="3.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuscaminasDomain.PlayerScore">
+    <Position X="2.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerScore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BuscaminasDomain.GameStatus">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
