@@ -8,7 +8,7 @@ namespace BuscaminasDomain
     public class Turn
     {
         private List<Player> players;
-        private int currentPlayerIndex = 0;
+        private int currentPlayerId = 0;
 
         public Turn(List<Player> players)
         {
@@ -17,15 +17,15 @@ namespace BuscaminasDomain
 
         public Player CurrentPlayer
         {
-            get { return players[currentPlayerIndex]; }
+            get { return players[currentPlayerId]; }
         }
 
         public void ChangeTurn()
         {
-            currentPlayerIndex++;
-            if (currentPlayerIndex >= players.Count)
+            currentPlayerId++;
+            if (currentPlayerId >= players.Count)
             {
-                currentPlayerIndex = 0;
+                currentPlayerId = 0;
             }
         }
     }

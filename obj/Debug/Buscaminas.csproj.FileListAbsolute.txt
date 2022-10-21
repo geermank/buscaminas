@@ -24,3 +24,10 @@ C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\B
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\Images\winner_face.png
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\Images\mine_crossed_out.png
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.MainMenuForm.resources
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\BuscaminasAuth.dll
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\BuscaminasBE.dll
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\BuscaminasData.dll
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\BuscaminasAuth.pdb
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\BuscaminasBE.pdb
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\BuscaminasData.pdb
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.RegisterForm.resources

@@ -38,9 +38,14 @@ namespace BuscaminasDomain
             OnSelected(board);
         }
 
-        internal void Flag()
+        internal void Flag(Board board)
         {
+            if (selected)
+            {
+                return;
+            }
             flagged = !flagged;
+            board.OnCellFlagged(this);
         }
 
         protected abstract void OnSelected(Board board);

@@ -62,5 +62,11 @@ namespace Buscaminas
             panelGameButton.Visible = true;
             panelMultiplayer.Visible = false;
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            RegisterForm form = new RegisterForm();
+            form.Show();
+        }
     }
 }

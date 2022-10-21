@@ -68,6 +68,12 @@
     <Compile Include="CellView.Designer.cs">
       <DependentUpon>CellView.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +92,9 @@
     </Compile>
     <EmbeddedResource Include="CellView.resx">
       <DependentUpon>CellView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
@@ -135,6 +144,10 @@
     <None Include="Resources\mine_normal.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="BuscaminasAuth\BuscaminasAuth.csproj">
+      <Project>{cc487c09-ee67-4bed-92bb-41eeb71f5db8}</Project>
+      <Name>BuscaminasAuth</Name>
+    </ProjectReference>
     <ProjectReference Include="BuscaminasDomain\BuscaminasDomain.csproj">
       <Project>{f1167b51-52e6-4a09-8979-0d4ea1e77cbf}</Project>
       <Name>BuscaminasDomain</Name>

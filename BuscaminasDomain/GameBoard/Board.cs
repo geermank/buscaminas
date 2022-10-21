@@ -8,7 +8,7 @@ namespace BuscaminasDomain.GameBoard
         internal event DelOnNumberUncovered OnNumberUncovered;
         internal event DelOnEmptyCellUncovered OnEmptyCellUncovered;
 
-        internal event DelOnCellFlagged OnCellFlagged;
+        internal event DelOnCellFlagged DelOnCellFlagged;
 
         internal event DelOnBoardCompleted OnBoardCompleted;
 
@@ -48,17 +48,13 @@ namespace BuscaminasDomain.GameBoard
 
         internal void FlagCell(BoardPosition position)
         {
-            BoardCell cell = GetCellFromPosition(position);
-            if (cell.Selected)
-            {
-                return;
-            }
+            GetCellFromPosition(position)?.Flag(this);
+        }
 
-            cell?.Flag();
-
+        internal void OnCellFlagged(BoardCell cell)
+        {
             UpdateNumberOfCellsFlagged(cell);
-            OnCellFlagged(cell);
-
+            DelOnCellFlagged(cell);
             CheckBoardCompleted();
         }
 

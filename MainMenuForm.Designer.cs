@@ -44,10 +44,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.radioButtonEasy = new System.Windows.Forms.RadioButton();
             this.panelMultiplayer = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelGameButton.SuspendLayout();
             this.panelDifficulty.SuspendLayout();
@@ -102,7 +104,7 @@
             // 
             this.panelGameButton.Controls.Add(this.button1);
             this.panelGameButton.Controls.Add(this.button2);
-            this.panelGameButton.Location = new System.Drawing.Point(241, 340);
+            this.panelGameButton.Location = new System.Drawing.Point(242, 172);
             this.panelGameButton.Name = "panelGameButton";
             this.panelGameButton.Size = new System.Drawing.Size(311, 98);
             this.panelGameButton.TabIndex = 5;
@@ -223,23 +225,15 @@
             this.panelMultiplayer.TabIndex = 7;
             this.panelMultiplayer.Visible = false;
             // 
-            // button3
+            // button4
             // 
-            this.button3.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(5, 223);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(271, 41);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Nueva partida";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(5, 4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(271, 173);
-            this.listBox1.TabIndex = 10;
+            this.button4.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(5, 178);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(271, 41);
+            this.button4.TabIndex = 11;
+            this.button4.Text = "Unirme";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -252,15 +246,42 @@
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // button4
+            // listBox1
             // 
-            this.button4.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(5, 178);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(271, 41);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Unirme";
-            this.button4.UseVisualStyleBackColor = true;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(5, 4);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(271, 173);
+            this.listBox1.TabIndex = 10;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(5, 223);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(271, 41);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Nueva partida";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(696, 411);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(101, 34);
+            this.btnLogin.TabIndex = 8;
+            this.btnLogin.Text = "Iniciar sesión";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Location = new System.Drawing.Point(696, 375);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(101, 34);
+            this.btnRegister.TabIndex = 9;
+            this.btnRegister.Text = "Registrarse";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // MainMenuForm
             // 
@@ -268,6 +289,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRegister);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.panelMultiplayer);
             this.Controls.Add(this.panelDifficulty);
             this.Controls.Add(this.panelGameButton);
@@ -307,5 +330,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnRegister;
     }
 }

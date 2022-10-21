@@ -1,62 +1,107 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace BuscaminasData
 {
-    public class Database
+    public class SqlDatabase
     {
-        private SqlConnection connection;
         private string connectionString;
 
-        private SqlTransaction transaction;
+        private SqlConnection sqlConnection;
+        private SqlTransaction sqlTransaction;
 
-        public Database(string connectionString)
+        public SqlDatabase(string connectionString) 
         {
             this.connectionString = connectionString;
-            this.connection = new SqlConnection(connectionString);
         }
 
-        public void ExecuteAsTransaction()
+        public void OpenConnection()
         {
-            if (connection == null)
+            if (sqlConnection != null)
             {
                 return;
             }
-            transaction = connection.BeginTransaction();
+            sqlConnection = new SqlConnection(connectionString);
+            sqlConnection.Open();
         }
 
-        public int ExecuteNonQuery(string sql, IDictionary<string, object> parameters)
+        public void CloseConnection()
         {
-            connection.Open();
+            sqlConnection.Close();
+            sqlConnection = null;
+        }
 
-            SqlCommand command = new SqlCommand
+        public void RunTransaction()
+        {
+            if (sqlConnection == null || sqlTransaction != null)
             {
-                CommandText = sql,
-                CommandType = CommandType.Text,
-                Connection = connection
-            };
-            if (transaction != null)
-            {
-                command.Transaction = transaction;
+                return;
             }
+            sqlTransaction = sqlConnection.BeginTransaction();
+        }
+
+        public void CommitTransaction()
+        {
+            sqlTransaction.Commit();
+            DisposeTransaction();
+        }
+
+        public void RollbackTransaction()
+        {
+            sqlTransaction.Rollback();
+            DisposeTransaction();
+        }
+
+        public int ExecuteNonQuery(string sql, IDictionary<string, object> parameters = null)
+        {
+            SqlCommand command = CreateCommand(sql, parameters);
+            int result = command.ExecuteNonQuery();
+            return result;
+        }
+
+        public int ExecuteScalar(string sql, IDictionary<string, object> parameters = null)
+        {
+            SqlCommand cmd = CreateCommand(sql, parameters);
+            int result = int.Parse(cmd.ExecuteScalar().ToString());
+            return result;
+        }
+
+        public DataTable ReadDisconnected(string sql, IDictionary<string, object> parameters = null)
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = CreateCommand(sql, parameters);
+
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            return dataTable;
+        }
+
+        private void DisposeTransaction()
+        {
+            sqlTransaction.Dispose();
+            sqlTransaction = null;
+        }
+
+        private SqlCommand CreateCommand(string sql, IDictionary<string, object> parameters)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = sqlConnection;
             if (parameters != null)
             {
-                foreach(KeyValuePair<string, object> param in parameters)
+                foreach (KeyValuePair<string, object> param in parameters)
                 {
-                    command.Parameters.AddWithValue(param.Key, param.Value);
+                    cmd.Parameters.AddWithValue(param.Key, param.Value);
                 }
             }
-
-            int result = command.ExecuteNonQuery();
-
-            connection.Close();
-
-            return result;
+            if (sqlTransaction != null)
+            {
+                cmd.Transaction = sqlTransaction;
+            }
+            return cmd;
         }
     }
 }

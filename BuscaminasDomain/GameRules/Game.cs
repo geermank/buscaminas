@@ -17,10 +17,14 @@ namespace BuscaminasDomain.GameRules
             void OnGameWon();
         }
 
+        internal int id;
+
         internal Board board;
         internal GameState gameState = GameState.PENDING;
 
-        protected IGameListener listener;
+        internal int timePlayedInSeconds;
+
+        internal protected IGameListener listener;
 
         internal Game(Board board)
         {
@@ -28,8 +32,14 @@ namespace BuscaminasDomain.GameRules
             this.board.OnNumberUncovered += HandleNumberSelected;
             this.board.OnEmptyCellUncovered += HandleEmptyCellSelected;
             this.board.OnMineUncovered += HandleMineSelected;
-            this.board.OnCellFlagged += HandleCellFlagged;
+            this.board.DelOnCellFlagged += HandleCellFlagged;
             this.board.OnBoardCompleted += HandleBoardCompleted;
+        }
+
+        public int TimePlayedInSeconds
+        {
+            get { return timePlayedInSeconds; }
+            set { timePlayedInSeconds = value; }
         }
 
         public bool IsFinished()
