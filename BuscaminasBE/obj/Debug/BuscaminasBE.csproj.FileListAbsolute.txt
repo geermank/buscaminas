@@ -1,0 +1,6 @@
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasBE\bin\Debug\BuscaminasBE.dll
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasBE\bin\Debug\BuscaminasBE.pdb
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasBE\obj\Debug\BuscaminasBE.csproj.AssemblyReference.cache
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasBE\obj\Debug\BuscaminasBE.csproj.CoreCompileInputs.cache
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasBE\obj\Debug\BuscaminasBE.dll
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasBE\obj\Debug\BuscaminasBE.pdb
