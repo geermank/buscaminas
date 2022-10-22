@@ -47,12 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CellViewConfig.cs" />
+    <Compile Include="FaceButtonImages.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameFormPresenter.cs" />
     <Compile Include="MainMenu\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>

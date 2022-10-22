@@ -7,11 +7,6 @@ namespace BuscaminasDomain.GameRules
     {
         private Player player;
 
-        public Player Player
-        {
-            get { return player; }
-        }
-
         internal SinglePlayerGame(Board board, Player player) : base(board)
         {
             this.player = player;

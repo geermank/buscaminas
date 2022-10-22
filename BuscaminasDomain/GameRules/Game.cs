@@ -22,7 +22,7 @@ namespace BuscaminasDomain.GameRules
         internal Board board;
         internal GameState gameState = GameState.PENDING;
 
-        internal int timePlayedInSeconds;
+        internal int timePlayedInSeconds = 0;
 
         internal protected IGameListener listener;
 
@@ -41,6 +41,12 @@ namespace BuscaminasDomain.GameRules
             get { return timePlayedInSeconds; }
             set { timePlayedInSeconds = value; }
         }
+
+        public void IncrementTimePlayed()
+        {
+            timePlayedInSeconds++;
+        }
+
 
         public bool IsFinished()
         {
