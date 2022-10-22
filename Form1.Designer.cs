@@ -109,8 +109,11 @@
             this.ClientSize = new System.Drawing.Size(837, 397);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelCellsContainer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscaminas";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelHeader.ResumeLayout(false);

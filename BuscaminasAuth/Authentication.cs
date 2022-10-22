@@ -16,6 +16,25 @@ namespace BuscaminasAuth
             return _instance;
         }
 
+        private BuscaminasBE.User currentUser = null;
+
+        private UserMapper userMapper;
+
+        public bool UserLogged
+        {
+            get { return currentUser != null; }
+        }
+
+        public string UserName
+        {
+            get { return currentUser.Name; }
+        }
+
+        private Authentication()
+        {
+            userMapper = new UserMapper();
+        }
+
         public void CreateUser(string name, string email, string password)
         {
             var userName = new UserName(name);
@@ -34,9 +53,9 @@ namespace BuscaminasAuth
 
             try
             {
-                UserMapper userMapper = new UserMapper();
                 userMapper.CreateUser(user);
-            } catch(Exception ex)
+                currentUser = user;
+            } catch(DatabaseException ex)
             {
                 throw new AuthException(ex.Message);
             }
@@ -50,13 +69,13 @@ namespace BuscaminasAuth
             var userPass = new Password(password);
             userPass.Validate();
 
-
-        }
-
-
-        public bool IsUserLogged()
-        {
-            return false;
+            try
+            {
+                currentUser = userMapper.Login(email, password);
+            } catch(DatabaseException ex)
+            {
+                throw new AuthException(ex.Message);
+            }
         }
     }
 }

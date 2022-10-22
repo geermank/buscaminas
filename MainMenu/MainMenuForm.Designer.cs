@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelGameButton = new System.Windows.Forms.Panel();
             this.panelDifficulty = new System.Windows.Forms.Panel();
             this.buttonDiffReturn = new System.Windows.Forms.Label();
@@ -50,10 +49,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelUserName = new System.Windows.Forms.Label();
             this.panelGameButton.SuspendLayout();
             this.panelDifficulty.SuspendLayout();
             this.panelMultiplayer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -82,6 +83,7 @@
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Font = new System.Drawing.Font("DS-Digital", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(3, 51);
             this.button2.Name = "button2";
@@ -90,15 +92,6 @@
             this.button2.Text = "Multijugador";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Buscaminas.Properties.Resources.mine_normal;
-            this.pictureBox1.Location = new System.Drawing.Point(370, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 66);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
             // 
             // panelGameButton
             // 
@@ -263,19 +256,21 @@
             this.button3.TabIndex = 9;
             this.button3.Text = "Nueva partida";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(696, 411);
+            this.btnLogin.Location = new System.Drawing.Point(679, 411);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(101, 34);
             this.btnLogin.TabIndex = 8;
             this.btnLogin.Text = "Iniciar sesión";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(696, 375);
+            this.btnRegister.Location = new System.Drawing.Point(679, 375);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(101, 34);
             this.btnRegister.TabIndex = 9;
@@ -283,12 +278,31 @@
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Buscaminas.Properties.Resources.mine_normal;
+            this.pictureBox1.Location = new System.Drawing.Point(370, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(66, 66);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // labelUserName
+            // 
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Location = new System.Drawing.Point(12, 432);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(0, 13);
+            this.labelUserName.TabIndex = 10;
+            this.labelUserName.Visible = false;
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(783, 450);
+            this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.panelMultiplayer);
@@ -296,14 +310,18 @@
             this.Controls.Add(this.panelGameButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainMenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscaminas";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.MainMenuForm_Load);
             this.panelGameButton.ResumeLayout(false);
             this.panelDifficulty.ResumeLayout(false);
             this.panelDifficulty.PerformLayout();
             this.panelMultiplayer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,5 +350,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Label labelUserName;
     }
 }

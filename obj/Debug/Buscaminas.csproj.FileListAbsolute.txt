@@ -31,3 +31,6 @@ C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\B
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\BuscaminasBE.pdb
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\BuscaminasData.pdb
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.RegisterForm.resources
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\af\Buscaminas.resources.dll
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.RegisterForm.af.resources
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\af\Buscaminas.resources.dll
