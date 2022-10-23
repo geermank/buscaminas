@@ -20,7 +20,7 @@ namespace BuscaminasDomain.GameRules
 
         public override bool UserCanRestartGame()
         {
-            return true;
+            return false;
         }
 
         internal MultiPlayerGame(Board board, List<Player> players) : base(board)
@@ -32,13 +32,14 @@ namespace BuscaminasDomain.GameRules
 
         internal override void HandleEmptyCellSelected(EmptyCell emptyCell)
         {
+            base.HandleEmptyCellSelected(emptyCell);
             turn.ChangeTurn();
             ResetMinesUncoveredCounter();
         }
 
         internal override void HandleMineSelected(MineCell mine)
         {
-            board.FlagCell(mine.Position);
+            board.FlagCell(mine.Position, true);
 
             minesUncoveredThisTurn++;
             foreach(PlayerScore score in playersScore)

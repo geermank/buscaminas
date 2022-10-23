@@ -38,9 +38,9 @@ namespace BuscaminasDomain
             OnSelected(board);
         }
 
-        internal void Flag(Board board)
+        internal void Flag(Board board, bool forceFlag)
         {
-            if (selected)
+            if (selected && !forceFlag)
             {
                 return;
             }

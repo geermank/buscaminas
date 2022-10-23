@@ -46,9 +46,9 @@ namespace BuscaminasDomain.GameBoard
             GetCellFromPosition(position)?.Select(this);
         }
 
-        internal void FlagCell(BoardPosition position)
+        internal void FlagCell(BoardPosition position, bool forceFlag = false)
         {
-            GetCellFromPosition(position)?.Flag(this);
+            GetCellFromPosition(position)?.Flag(this, forceFlag);
         }
 
         internal void OnCellFlagged(BoardCell cell)

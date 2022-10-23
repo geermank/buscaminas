@@ -34,8 +34,6 @@ namespace Buscaminas
         private GameDifficulty gameDifficulty;
         private IGameFactory gameFactory;
 
-        private Authentication authentication;
-
         public GameFormPresenter(IGameForm form)
         {
             this.form = form;
@@ -59,15 +57,18 @@ namespace Buscaminas
 
         public void ResetGame()
         {
-            form.SetFaceButtonImage(FaceButtonImages.SMILE);
-            form.ChangeCellsPanelEnable(true);
-            
-            UpdateMinesLeftCount(gameDifficulty.Mines);
-            CreateNewGame();
+            if(currentGame.UserCanRestartGame())
+            {
+                form.SetFaceButtonImage(FaceButtonImages.SMILE);
+                form.ChangeCellsPanelEnable(true);
 
-            form.ResetCellViews(gameDifficulty.Width, gameDifficulty.Height);
-            form.StopTimer();
-            form.StartTimer();
+                UpdateMinesLeftCount(gameDifficulty.Mines);
+                CreateNewGame();
+
+                form.ResetCellViews(gameDifficulty.Width, gameDifficulty.Height);
+                form.StopTimer();
+                form.StartTimer();
+            }
         }
         
         public void OnGameStarted()
