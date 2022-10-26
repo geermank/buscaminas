@@ -15,6 +15,8 @@ namespace BuscaminasDomain.GameRules
             void RemoveFlag(int x, int y, int remainingMines);
             void OnLostGame();
             void OnGameWon();
+            void OnPlayerTurnChanged(Player player, bool stopTimer);
+            void ShowPlayers(Player player1, Player player2);
         }
 
         internal int id;
@@ -47,25 +49,28 @@ namespace BuscaminasDomain.GameRules
             timePlayedInSeconds++;
         }
 
-
         public bool IsFinished()
         {
-            return gameState == GameState.FINISHED || gameState == GameState.LOST;
+            return gameState == GameState.FINISHED;
         }
 
         public void SetGameListener(IGameListener listener)
         {
             this.listener = listener;
+            OnListenerAttached();
         }
 
         public void LeftClickCell(int x, int y)
         {
-            board.SelectCell(new BoardPosition(x, y));
+            if (CurrentUserCanPlay())
+            {
+                board.SelectCell(new BoardPosition(x, y));
+            }
         }
 
         public void RightClickCell(int x, int y)
         {
-            if(IsUserFlagEnabled())
+            if(IsUserFlagEnabled() && CurrentUserCanPlay())
             {
                 board.FlagCell(new BoardPosition(x, y));
             }
@@ -102,5 +107,10 @@ namespace BuscaminasDomain.GameRules
 
         public abstract bool UserCanRestartGame();
         protected abstract bool IsUserFlagEnabled();
+        protected abstract bool CurrentUserCanPlay();
+        protected virtual void OnListenerAttached()
+        {
+            // let the children decide whether they want to react to a new listener or not
+        }
     }
 }

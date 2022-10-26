@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuscaminasDomain.GameRules.Factories
+namespace BuscaminasDomain
 {
-    public interface IGameFactory
+    public interface IBEObjectConverter<T>
     {
-        Game CreateGame(GameDifficulty difficulty);
+        T ToBEObject();
     }
 }

@@ -12,8 +12,6 @@ namespace Buscaminas
 
         private GameFormPresenter presenter;
 
-        private int gameDurationInSeconds = 0;
-
         public Form1()
         {
             InitializeComponent();
@@ -129,11 +127,9 @@ namespace Buscaminas
             panelCellsContainer.Size = new Size(panelWidth, panelHeight);  
         }
 
-        public void ConfigureCellViews(int width, int height)
+        public void ConfigureCellViews(int width, int height, int cellSize)
         {
             cellViews = new CellView[width, height];
-
-            int cellSize = CellViewConfig.CellSize;
 
             for (int x = 0; x < width; x++)
             {
@@ -178,6 +174,21 @@ namespace Buscaminas
         public void SetTimePlayed(string timePlayedInSeconds)
         {
             label2.Text = timePlayedInSeconds;
+        }
+
+        public void ShowPlayers(string player1, string player2)
+        {
+            labelPlayer1.Visible = true;
+            labelPlayer1.Text = player1;
+
+            labelPlayer2.Visible = true;
+            labelPlayer2.Text = player2;
+        }
+
+        public void ShowCurrentTurnPlayer(string player)
+        {
+            labelTurnOwner.Visible = true;
+            labelTurnOwner.Text = player;
         }
     }
 }

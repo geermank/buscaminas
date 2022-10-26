@@ -5,11 +5,11 @@ namespace BuscaminasDomain.GameRules
 {
     public class SinglePlayerGame : Game
     {
-        private Player player;
+        private int playerId;
 
-        internal SinglePlayerGame(Board board, Player player) : base(board)
+        internal SinglePlayerGame(Board board, int playerId) : base(board)
         {
-            this.player = player;
+            this.playerId = playerId;
         }
 
         public override bool UserCanRestartGame()
@@ -34,7 +34,7 @@ namespace BuscaminasDomain.GameRules
                 }
             }
 
-            gameState = GameState.LOST;
+            gameState = GameState.FINISHED;
             listener?.OnLostGame();
         }
 
@@ -65,6 +65,11 @@ namespace BuscaminasDomain.GameRules
             gameState = GameState.FINISHED;
 
             base.HandleBoardCompleted();
+        }
+
+        protected override bool CurrentUserCanPlay()
+        {
+            return true;
         }
     }
 }

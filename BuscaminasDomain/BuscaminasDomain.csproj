@@ -63,13 +63,27 @@
     <Compile Include="GameRules\MultiPlayerGame.cs" />
     <Compile Include="Cell\NumberCell.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="PlayerScore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameRules\SinglePlayerGame.cs" />
+    <Compile Include="IBEObjectConverter.cs" />
     <Compile Include="Turn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuscaminasAuth\BuscaminasAuth.csproj">
+      <Project>{cc487c09-ee67-4bed-92bb-41eeb71f5db8}</Project>
+      <Name>BuscaminasAuth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BuscaminasBE\BuscaminasBE.csproj">
+      <Project>{e55d5c33-a137-48a2-8d61-bd15eaf58a64}</Project>
+      <Name>BuscaminasBE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BuscaminasData\BuscaminasData.csproj">
+      <Project>{474529ac-19bf-4062-b0b9-ebe6cd24afdb}</Project>
+      <Name>BuscaminasData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

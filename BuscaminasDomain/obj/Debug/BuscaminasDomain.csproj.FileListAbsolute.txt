@@ -4,3 +4,10 @@ C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\B
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\obj\Debug\BuscaminasDomain.csproj.CoreCompileInputs.cache
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\obj\Debug\BuscaminasDomain.dll
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\obj\Debug\BuscaminasDomain.pdb
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\bin\Debug\BuscaminasAuth.dll
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\bin\Debug\BuscaminasBE.dll
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\bin\Debug\BuscaminasData.dll
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\bin\Debug\BuscaminasAuth.pdb
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\bin\Debug\BuscaminasBE.pdb
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\bin\Debug\BuscaminasData.pdb
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\BuscaminasDomain\obj\Debug\BuscaminasDomain.csproj.CopyComplete

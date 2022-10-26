@@ -29,6 +29,15 @@ namespace BuscaminasAuth
             get { return currentUser.Name; }
         }
 
+        public int UserId { 
+            get { return currentUser.Id; }
+        }
+
+        public BuscaminasBE.User CurrentUser
+        {
+            get { return currentUser; }
+        }
+
         private Authentication()
         {
             userMapper = new UserMapper();

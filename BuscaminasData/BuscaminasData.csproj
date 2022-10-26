@@ -45,6 +45,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SinglePlayerGameMapper.cs" />
     <Compile Include="UserMapper.cs" />
   </ItemGroup>
   <ItemGroup>

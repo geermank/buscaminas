@@ -1,15 +1,15 @@
-﻿using BuscaminasDomain.GameBoard;
+﻿using BuscaminasAuth;
+using BuscaminasDomain.GameBoard;
 using System.Collections.Generic;
 
 namespace BuscaminasDomain.GameRules
 {
-    public class MultiPlayerGame : Game
+    public class MultiPlayerGame : Game, IBEObjectConverter<BuscaminasBE.MultiplayerGame>
     {
         private const int MAX_UNCOVER_MINES_PER_TURN = 5;
 
         private Turn turn;
         private List<Player> players;
-        private List<PlayerScore> playersScore;
 
         private int minesUncoveredThisTurn = 0;
 
@@ -26,8 +26,20 @@ namespace BuscaminasDomain.GameRules
         internal MultiPlayerGame(Board board, List<Player> players) : base(board)
         {
             this.players = players;
-            this.playersScore = CreatePlayersScore(players);
             this.turn = new Turn(players);
+        }
+
+        protected override void OnListenerAttached()
+        {
+            listener.OnPlayerTurnChanged(turn.CurrentPlayer, false);
+
+            Player p1 = players[0];
+            Player p2 = null;
+            if (players.Count == 2)
+            {
+                p2 = players[1];
+            }
+            listener.ShowPlayers(p1, p2);
         }
 
         internal override void HandleEmptyCellSelected(EmptyCell emptyCell)
@@ -35,21 +47,22 @@ namespace BuscaminasDomain.GameRules
             base.HandleEmptyCellSelected(emptyCell);
             turn.ChangeTurn();
             ResetMinesUncoveredCounter();
+            
+            listener.OnPlayerTurnChanged(turn.CurrentPlayer, true);
         }
 
         internal override void HandleMineSelected(MineCell mine)
         {
             board.FlagCell(mine.Position, true);
+            turn.CurrentPlayer?.IncrementScore();
 
             minesUncoveredThisTurn++;
-            foreach(PlayerScore score in playersScore)
-            {
-                score.IncreaseScore(turn.CurrentPlayer);
-            }
+
             if (minesUncoveredThisTurn > MAX_UNCOVER_MINES_PER_TURN)
             {
                 turn.ChangeTurn();
                 ResetMinesUncoveredCounter();
+                listener.OnPlayerTurnChanged(turn.CurrentPlayer, true);
             }
         }
 
@@ -58,6 +71,7 @@ namespace BuscaminasDomain.GameRules
             base.HandleNumberSelected(numberCell);
             turn.ChangeTurn();
             ResetMinesUncoveredCounter();
+            listener.OnPlayerTurnChanged(turn.CurrentPlayer, true);
         }
 
         private void ResetMinesUncoveredCounter()
@@ -65,20 +79,20 @@ namespace BuscaminasDomain.GameRules
             minesUncoveredThisTurn = 0;
         }
 
-        private List<PlayerScore> CreatePlayersScore(List<Player> players)
-        {
-            List<PlayerScore> scores = new List<PlayerScore>();
-            foreach(Player p in players)
-            {
-                PlayerScore score = new PlayerScore(p);
-                scores.Add(score);
-            }
-            return scores;
-        }
-
         protected override bool IsUserFlagEnabled()
         {
             return false;
+        }
+
+        protected override bool CurrentUserCanPlay()
+        {
+            Player currentPlayer = players.Find(p => p.UserId == Authentication.GetInstance().UserId);
+            return turn.CanPlay(currentPlayer);
+        }
+
+        public BuscaminasBE.MultiplayerGame ToBEObject()
+        {
+            return new BuscaminasBE.MultiplayerGame();
         }
     }
 }

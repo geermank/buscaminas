@@ -1,5 +1,4 @@
-﻿using BuscaminasAuth;
-using BuscaminasDomain;
+﻿using BuscaminasDomain;
 using BuscaminasDomain.GameRules;
 using BuscaminasDomain.GameRules.Factories;
 
@@ -10,7 +9,7 @@ namespace Buscaminas
         void ConfigureFaceButton(int width, int height, int x, int y);
         void SetFaceButtonImage(string path);
         void ConfigureBoardView(int headerWidth, int headerHeight, int panelWidth, int panelHeight);
-        void ConfigureCellViews(int width, int height);
+        void ConfigureCellViews(int width, int height, int cellSize);
         void SetMinesLeft(string minesLeft);
         void SetTimePlayed(string timePlayedInSeconds);
         void StartTimer();
@@ -24,6 +23,8 @@ namespace Buscaminas
         void ShowFlag(int x, int y);
         void RemoveFlag(int x, int y);
         void ResetCellViews(int width, int height);
+        void ShowPlayers(string player1, string player2);
+        void ShowCurrentTurnPlayer(string player);
     }
 
     internal class GameFormPresenter : Game.IGameListener
@@ -78,7 +79,7 @@ namespace Buscaminas
             UpdateMinesLeftCount(gameDifficulty.Mines);
             CreateNewGame();
 
-            form.ConfigureCellViews(gameDifficulty.Width, gameDifficulty.Height);
+            form.ConfigureCellViews(gameDifficulty.Width, gameDifficulty.Height, CellViewConfig.CellSize);
             form.StartTimer();
         }
 
@@ -155,8 +156,7 @@ namespace Buscaminas
 
         private void CreateNewGame()
         {
-            Player player = new Player();
-            currentGame = gameFactory.CreateGame(gameDifficulty, player);
+            currentGame = gameFactory.CreateGame(gameDifficulty);
             currentGame.SetGameListener(this);
         }
 
@@ -209,6 +209,40 @@ namespace Buscaminas
             form.ChangeCellsPanelEnable(false);
             form.StopTimer();
             form.SetFaceButtonImage(FaceButtonImages.WINNER);
+        }
+
+        public void OnPlayerTurnChanged(Player player, bool stopTimer)
+        {
+            string turnLabel;
+            if (player == null)
+            {
+                turnLabel = "Turno: Esperando a que un jugador se una";
+            } else
+            {
+                turnLabel = "Turno: " + player.Name;
+            }
+
+            form.ShowCurrentTurnPlayer(turnLabel);
+            if (stopTimer)
+            {
+                form.StopTimer();
+            }
+        }
+
+        public void ShowPlayers(Player player1, Player player2)
+        {
+            string player1Label = player1.Name + " - " + "Puntaje: " + player1.Score;
+            
+            string player2Label;
+            if (player2 == null)
+            {
+                player2Label = "Esperando a jugador 2";
+            } else 
+            {
+                player2Label = player2.Name + " - " + "Puntaje: " + player2.Score;
+            }
+
+            form.ShowPlayers(player1Label, player2Label);
         }
     }
 }
