@@ -1,4 +1,5 @@
-﻿using BuscaminasDomain.GameBoard;
+﻿using BuscaminasData;
+using BuscaminasDomain.GameBoard;
 
 namespace BuscaminasDomain.GameRules
 {
@@ -24,9 +25,12 @@ namespace BuscaminasDomain.GameRules
         internal Board board;
         internal GameState gameState = GameState.PENDING;
 
-        internal int timePlayedInSeconds = 0;
+        internal protected int timePlayedInSeconds = 0;
 
         internal protected IGameListener listener;
+
+        private GameRestorer gameRestorer = new GameRestorer(); 
+        private bool isRestoredGame = false;
 
         internal Game(Board board)
         {
@@ -38,10 +42,24 @@ namespace BuscaminasDomain.GameRules
             this.board.OnBoardCompleted += HandleBoardCompleted;
         }
 
+        internal Game(Board board, int id, GameState gameState, int timePlayedInSeconds) : this(board)
+        {
+            this.id = id;
+            this.gameState = gameState;
+            this.timePlayedInSeconds = timePlayedInSeconds;
+            this.isRestoredGame = true;
+        }
+
         public int TimePlayedInSeconds
         {
             get { return timePlayedInSeconds; }
             set { timePlayedInSeconds = value; }
+        }
+
+        public int Id
+        {
+            get { return id; }
+            internal set { id = value; }
         }
 
         public void IncrementTimePlayed()
@@ -58,6 +76,7 @@ namespace BuscaminasDomain.GameRules
         {
             this.listener = listener;
             OnListenerAttached();
+            RestoreGameIfNeeded();
         }
 
         public void LeftClickCell(int x, int y)
@@ -85,29 +104,41 @@ namespace BuscaminasDomain.GameRules
 
         internal virtual void HandleNumberSelected(NumberCell numberCell)
         {
+            GetGameMapper().SaveSelectMove(id, timePlayedInSeconds, numberCell.ToBEObject());
             listener?.ShowNumber(numberCell.Position.X, numberCell.Position.Y, numberCell.Number);
         }
 
         internal virtual void HandleEmptyCellSelected(EmptyCell emptyCell)
         {
+            GetGameMapper().SaveSelectMove(id, timePlayedInSeconds, emptyCell.ToBEObject());
             listener?.ShowEmptyCell(emptyCell.Position.X, emptyCell.Position.Y);
         }
 
         internal virtual void HandleCellFlagged(BoardCell boardCell)
         {
-            int remainingMines = board.NumberOfMines - board.NumberOfCellsFlagged;
+            GetGameMapper().SaveFlagMove(id, board.ToBEObject(), boardCell.ToBEObject(), timePlayedInSeconds);
             if (boardCell.Flagged)
             {
-                listener?.ShowFlag(boardCell.Position.X, boardCell.Position.Y, remainingMines);
+                listener?.ShowFlag(boardCell.Position.X, boardCell.Position.Y, board.RemainingMines);
             } else
             {
-                listener?.RemoveFlag(boardCell.Position.X, boardCell.Position.Y, remainingMines);
+                listener?.RemoveFlag(boardCell.Position.X, boardCell.Position.Y, board.RemainingMines);
             }
+        }
+
+        private void RestoreGameIfNeeded()
+        {
+            if (!isRestoredGame)
+            {
+                return;
+            }
+            gameRestorer.RestoreGame(board, listener);
         }
 
         public abstract bool UserCanRestartGame();
         protected abstract bool IsUserFlagEnabled();
         protected abstract bool CurrentUserCanPlay();
+        protected abstract GameMapper GetGameMapper();
         protected virtual void OnListenerAttached()
         {
             // let the children decide whether they want to react to a new listener or not

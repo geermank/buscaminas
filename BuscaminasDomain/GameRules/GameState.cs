@@ -2,9 +2,9 @@
 {
     internal enum GameState
     {
-        PENDING,
-        LOOKING_FOR_RIVAL,
-        IN_PROGRESS,
-        FINISHED
+        PENDING = 0,
+        LOOKING_FOR_RIVAL = 1,
+        IN_PROGRESS = 2,
+        FINISHED = 3
     }
 }

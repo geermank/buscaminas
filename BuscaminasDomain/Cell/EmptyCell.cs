@@ -1,10 +1,16 @@
-﻿using BuscaminasDomain.GameBoard;
+﻿using BuscaminasDomain.Cell;
+using BuscaminasDomain.GameBoard;
 
 namespace BuscaminasDomain
 {
-    internal class EmptyCell : BoardCell
+    internal class EmptyCell : BoardCell, IBEObjectConverter<BuscaminasBE.BoardCell>
     {
         internal EmptyCell(BoardPosition position) : base(position)
+        {
+            // empty constructor
+        }
+
+        internal EmptyCell(int id, bool selected, bool flagged, BoardPosition position) : base(id, selected, flagged, position)
         {
             // empty constructor
         }
@@ -12,6 +18,13 @@ namespace BuscaminasDomain
         protected override void OnSelected(Board board)
         {
             board.OnCellSelected(this);
+        }
+
+        override public BuscaminasBE.BoardCell ToBEObject()
+        {
+            BuscaminasBE.BoardCell cell = base.ToBEObject();
+            cell.TypeId = (int) CellType.EMPTY;
+            return cell;
         }
     }
 }

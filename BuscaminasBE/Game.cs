@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BuscaminasBE
+﻿namespace BuscaminasBE
 {
     public abstract class Game
     {
@@ -29,6 +23,14 @@ namespace BuscaminasBE
         {
             get { return timePlayedInSeconds; }
             set { timePlayedInSeconds = value; }
+        }
+
+        private Board board;
+
+        public Board Board
+        {
+            get { return board; }
+            set { board = value; }
         }
     }
 }

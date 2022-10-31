@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Buscaminas.MainMenu;
 using BuscaminasDomain;
@@ -26,19 +20,25 @@ namespace Buscaminas
         private void button2_Click(object sender, EventArgs e)
         {
             panelGameButton.Visible = false;
+            panelSinglePlayerLoadNew.Visible = false;
             panelMultiplayer.Visible = true;
+            panelDifficulty.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             panelGameButton.Visible = false;
-            panelDifficulty.Visible = true;
+            panelSinglePlayerLoadNew.Visible = true;
+            panelMultiplayer.Visible = false;
+            panelDifficulty.Visible = false;
         }
 
         private void buttonDiffReturn_Click(object sender, EventArgs e)
         {
-            panelGameButton.Visible = true;
+            panelGameButton.Visible = false;
+            panelSinglePlayerLoadNew.Visible = true;
             panelDifficulty.Visible = false;
+            panelMultiplayer.Visible = false;
         }
 
         private void buttonStartGame_Click(object sender, EventArgs e)
@@ -90,9 +90,10 @@ namespace Buscaminas
             }
         }
 
-        public void ChangeMultiplayerButtonEnable(bool isEnable)
+        public void ChangeUserLoggedButtonEnable(bool isEnable)
         {
             button2.Enabled = isEnable;
+            btnSpgContinue.Enabled = isEnable;
         }
 
         public void SetCurrentUserName(string userName)
@@ -117,6 +118,47 @@ namespace Buscaminas
         private void button3_Click(object sender, EventArgs e)
         {
             presenter.StartMultiplayerGame();
+        }
+
+        private void btnSpgNewGame_Click(object sender, EventArgs e)
+        {
+            panelGameButton.Visible = false;
+            panelSinglePlayerLoadNew.Visible = false;
+            panelDifficulty.Visible = true;
+            panelMultiplayer.Visible = false;
+        }
+
+        private void btnReturnSpgMenu_Click(object sender, EventArgs e)
+        {
+            panelGameButton.Visible = true;
+            panelSinglePlayerLoadNew.Visible = false;
+            panelDifficulty.Visible = false;
+            panelMultiplayer.Visible = false;
+        }
+
+        public void ShowSinglePlayerInProgressGames(List<InProgressGameViewItem> items)
+        {
+            listBoxInProgressSpg.Items.Clear();
+            foreach(InProgressGameViewItem item in items)
+            {
+                listBoxInProgressSpg.Items.Add(item);
+            }
+        }
+
+        private void btnSpgContinue_Click(object sender, EventArgs e)
+        {
+            InProgressGameViewItem selectedGame = (InProgressGameViewItem) listBoxInProgressSpg.SelectedItem;
+            presenter.ContinueSinglePlayerGame(selectedGame);
+        }
+
+        private void refrescarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            presenter.RefreshSinglePlayerGames();
+        }
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

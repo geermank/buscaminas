@@ -1,4 +1,5 @@
 ﻿using BuscaminasAuth;
+using BuscaminasData;
 using BuscaminasDomain.GameBoard;
 using System.Collections.Generic;
 
@@ -12,6 +13,8 @@ namespace BuscaminasDomain.GameRules
         private List<Player> players;
 
         private int minesUncoveredThisTurn = 0;
+
+        private MultiPlayerGameMapper gameMapper;
 
         public List<Player> Players
         {
@@ -27,6 +30,7 @@ namespace BuscaminasDomain.GameRules
         {
             this.players = players;
             this.turn = new Turn(players);
+            this.gameMapper = new MultiPlayerGameMapper();
         }
 
         protected override void OnListenerAttached()
@@ -44,11 +48,12 @@ namespace BuscaminasDomain.GameRules
 
         internal override void HandleEmptyCellSelected(EmptyCell emptyCell)
         {
-            base.HandleEmptyCellSelected(emptyCell);
             turn.ChangeTurn();
             ResetMinesUncoveredCounter();
             
             listener.OnPlayerTurnChanged(turn.CurrentPlayer, true);
+
+            base.HandleEmptyCellSelected(emptyCell);
         }
 
         internal override void HandleMineSelected(MineCell mine)
@@ -92,7 +97,31 @@ namespace BuscaminasDomain.GameRules
 
         public BuscaminasBE.MultiplayerGame ToBEObject()
         {
-            return new BuscaminasBE.MultiplayerGame();
+            var multiplayerGame = new BuscaminasBE.MultiplayerGame();
+            multiplayerGame.Id = id;
+            multiplayerGame.GameStateId = (int) gameState;
+            multiplayerGame.TimePlayedInSeconds = timePlayedInSeconds;
+            multiplayerGame.Board = board.ToBEObject();
+            multiplayerGame.Turn = turn.ToBEObject();
+
+            List<BuscaminasBE.Player> bePlayers = new List<BuscaminasBE.Player>();
+            foreach(Player player in players)
+            {
+                BuscaminasBE.Player bePlayer = new BuscaminasBE.Player();
+                bePlayer.GameId = id;
+                bePlayer.UserId = player.UserId;
+                bePlayer.Score = player.Score;
+
+                bePlayers.Add(bePlayer);
+            }
+            multiplayerGame.Players = bePlayers;
+
+            return multiplayerGame;
+        }
+
+        protected override GameMapper GetGameMapper()
+        {
+            return gameMapper;
         }
     }
 }

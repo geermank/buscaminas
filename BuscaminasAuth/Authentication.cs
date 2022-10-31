@@ -29,8 +29,16 @@ namespace BuscaminasAuth
             get { return currentUser.Name; }
         }
 
-        public int UserId { 
-            get { return currentUser.Id; }
+        public int UserId {
+            get {
+                if (currentUser == null)
+                {
+                    return -1;
+                } else
+                {
+                    return currentUser.Id;
+                }
+            }
         }
 
         public BuscaminasBE.User CurrentUser

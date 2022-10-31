@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cell\BoardCellRestorer.cs" />
+    <Compile Include="Cell\CellType.cs" />
+    <Compile Include="GameLoader\IGamesLoader.cs" />
     <Compile Include="GameBoard\Board.cs" />
     <Compile Include="GameBoard\BoardDelegates.cs" />
     <Compile Include="GameBoard\BoardPosition.cs" />
@@ -50,14 +53,19 @@
     <Compile Include="Cell\EmptyCell.cs" />
     <Compile Include="GameBoard\Iterator\BoardCellsIterator.cs" />
     <Compile Include="GameDifficultyFactory.cs" />
+    <Compile Include="GameLoader\SinglePlayerGameLoader.cs" />
     <Compile Include="GameRules\Factories\IGameFactory.cs" />
     <Compile Include="GameRules\Factories\MultiplayerGameFactory.cs" />
     <Compile Include="GameRules\Factories\SinglePlayerGameFactory.cs" />
+    <Compile Include="GameRules\Factories\SinglePlayerGameRestorer.cs" />
     <Compile Include="GameRules\Game.cs" />
     <Compile Include="GameBoard\Iterator\CellNeighboursIterator.cs" />
     <Compile Include="GameBoard\Iterator\IBoardIterator.cs" />
     <Compile Include="GameDifficulty.cs" />
+    <Compile Include="GameRules\GameRestorer.cs" />
     <Compile Include="GameRules\GameState.cs" />
+    <Compile Include="GameRules\Result\GameResult.cs" />
+    <Compile Include="GameRules\Result\MultiplayerGameResult.cs" />
     <Compile Include="GameStatus.cs" />
     <Compile Include="Cell\MineCell.cs" />
     <Compile Include="GameRules\MultiPlayerGame.cs" />
@@ -67,6 +75,7 @@
     <Compile Include="GameRules\SinglePlayerGame.cs" />
     <Compile Include="IBEObjectConverter.cs" />
     <Compile Include="Turn.cs" />
+    <Compile Include="Utils\IntegerToBoolConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

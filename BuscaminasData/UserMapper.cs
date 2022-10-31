@@ -30,11 +30,8 @@ namespace BuscaminasData
             queryParams.Add("@name", user.Name);
             queryParams.Add("@password", user.Password);
 
-            int createUserResult = database.ExecuteNonQuery("CREATE_USER", queryParams);
-            if (createUserResult <= 0)
-            {
-                throw new DatabaseException("No se pudo registrar el usuario");
-            }
+            int userId = database.ExecuteNonQueryWithReturnValue("CREATE_USER", queryParams);
+            user.Id = userId;
 
             database.CloseConnection();
         }

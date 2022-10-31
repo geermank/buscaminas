@@ -155,6 +155,10 @@
       <Project>{cc487c09-ee67-4bed-92bb-41eeb71f5db8}</Project>
       <Name>BuscaminasAuth</Name>
     </ProjectReference>
+    <ProjectReference Include="BuscaminasBE\BuscaminasBE.csproj">
+      <Project>{e55d5c33-a137-48a2-8d61-bd15eaf58a64}</Project>
+      <Name>BuscaminasBE</Name>
+    </ProjectReference>
     <ProjectReference Include="BuscaminasDomain\BuscaminasDomain.csproj">
       <Project>{f1167b51-52e6-4a09-8979-0d4ea1e77cbf}</Project>
       <Name>BuscaminasDomain</Name>

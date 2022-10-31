@@ -190,5 +190,14 @@ namespace Buscaminas
             labelTurnOwner.Visible = true;
             labelTurnOwner.Text = player;
         }
+
+        public void ShowError(string message, bool closeGame)
+        {
+            MessageBox.Show(message, "Error");
+            if(closeGame)
+            {
+                Close();
+            }
+        }
     }
 }

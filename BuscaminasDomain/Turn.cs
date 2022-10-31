@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BuscaminasDomain
 {
-    public class Turn
+    public class Turn : IBEObjectConverter<BuscaminasBE.Turn>
     {
         private List<Player> players;
         private int currentPlayerId = 0;
@@ -61,6 +61,14 @@ namespace BuscaminasDomain
             }
             currentPlayerId = players[nextIndex].UserId;
             turnNumber++;
+        }
+
+        public BuscaminasBE.Turn ToBEObject()
+        {
+            BuscaminasBE.Turn turn = new BuscaminasBE.Turn();
+            turn.Number = turnNumber;
+            turn.CurrentPlayerId = currentPlayerId;
+            return turn;
         }
     }
 }

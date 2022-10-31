@@ -1,6 +1,7 @@
 ﻿using BuscaminasDomain;
 using BuscaminasDomain.GameRules;
 using BuscaminasDomain.GameRules.Factories;
+using System;
 
 namespace Buscaminas
 {
@@ -25,6 +26,7 @@ namespace Buscaminas
         void ResetCellViews(int width, int height);
         void ShowPlayers(string player1, string player2);
         void ShowCurrentTurnPlayer(string player);
+        void ShowError(string message, bool closeGame);
     }
 
     internal class GameFormPresenter : Game.IGameListener
@@ -52,7 +54,7 @@ namespace Buscaminas
 
         public void OnTimerTick()
         {
-            currentGame.IncrementTimePlayed();
+            currentGame?.IncrementTimePlayed();
             UpdateTimePlayed();
         }
 
@@ -74,12 +76,13 @@ namespace Buscaminas
         
         public void OnGameStarted()
         {
+            form.ConfigureCellViews(gameDifficulty.Width, gameDifficulty.Height, CellViewConfig.CellSize);
             ConfigureFaceButton();
             ConfigureBoardHeaderAndMinesPanel();
             UpdateMinesLeftCount(gameDifficulty.Mines);
+
             CreateNewGame();
 
-            form.ConfigureCellViews(gameDifficulty.Width, gameDifficulty.Height, CellViewConfig.CellSize);
             form.StartTimer();
         }
 
@@ -156,8 +159,14 @@ namespace Buscaminas
 
         private void CreateNewGame()
         {
-            currentGame = gameFactory.CreateGame(gameDifficulty);
-            currentGame.SetGameListener(this);
+            try
+            {
+                currentGame = gameFactory.CreateGame(gameDifficulty);
+                currentGame.SetGameListener(this);
+            } catch(Exception ex)
+            {
+                form.ShowError(ex.Message, true);
+            }
         }
 
         public void ShowExploitedMine(int x, int y)

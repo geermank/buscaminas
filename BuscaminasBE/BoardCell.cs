@@ -26,7 +26,7 @@
             set { typeId = value; }
         }
 
-        private int number;
+        private int number = -1;
 
         public int Number
         {

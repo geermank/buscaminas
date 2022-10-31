@@ -60,6 +60,18 @@ namespace BuscaminasData
             return result;
         }
 
+        public int ExecuteNonQueryWithReturnValue(string sql, IDictionary<string, object> parameters = null)
+        {
+            SqlCommand command = CreateCommand(sql, parameters);
+
+            var returnParameter = command.Parameters.Add("@ReturnValue", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
+            command.ExecuteNonQuery();
+
+            return int.Parse(returnParameter.Value.ToString());
+        }
+
         public int ExecuteScalar(string sql, IDictionary<string, object> parameters = null)
         {
             SqlCommand cmd = CreateCommand(sql, parameters);

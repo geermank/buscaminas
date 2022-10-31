@@ -1,6 +1,6 @@
 ﻿namespace BuscaminasDomain
 {
-    public class Player
+    public class Player : IBEObjectConverter<BuscaminasBE.Player>
     {
         private int userId;
         private string name;
@@ -43,6 +43,14 @@
         public void IncrementScore()
         {
             score++;
+        }
+
+        public BuscaminasBE.Player ToBEObject()
+        {
+            BuscaminasBE.Player player = new BuscaminasBE.Player();
+            player.UserId = userId;
+            player.Score = score;
+            return player;
         }
     }
 }

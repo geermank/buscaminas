@@ -44,8 +44,12 @@
     <Compile Include="Board.cs" />
     <Compile Include="BoardCell.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="InProgressGame.cs" />
     <Compile Include="MultiplayerGame.cs" />
+    <Compile Include="MultiplayerResult.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="SinglePlayerGame.cs" />
+    <Compile Include="Turn.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

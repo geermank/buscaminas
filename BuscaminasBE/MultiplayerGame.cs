@@ -1,19 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BuscaminasBE
 {
     public class MultiplayerGame : Game
     {
-        private int multiplayerResultId;
+        private MultiplayerResult result;
 
-        public int MultiplayerResultId
+        public MultiplayerResult MultiplayerResult
         {
-            get { return multiplayerResultId; }
-            set { multiplayerResultId = value; }
+            get { return result; }
+            set { result = value; }
+        }
+
+        private Turn turn;
+
+        public Turn Turn
+        {
+            get { return turn; }
+            set { turn = value; }
+        }
+
+        private List<Player> players;
+
+        public List<Player> Players
+        {
+            get { return players; }
+            set { players = value; }
         }
     }
 }

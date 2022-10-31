@@ -1,29 +1,34 @@
 ﻿using BuscaminasAuth;
+using BuscaminasData;
 using BuscaminasDomain.GameBoard;
 
 namespace BuscaminasDomain.GameRules.Factories
 {
     public class SinglePlayerGameFactory : IGameFactory
     {
-        public Game CreateGame(GameDifficulty difficulty)
+        private SinglePlayerGameMapper gameMapper = new SinglePlayerGameMapper();
+
+        public virtual Game CreateGame(GameDifficulty difficulty)
         {
             Board board = BoardGenerator.GetInstance().CreateBoard(difficulty);
-            return new SinglePlayerGame(board, GetPlayerId());
+            
+            SinglePlayerGame singlePlayerGame = new SinglePlayerGame(board, GetPlayerId());
+
+            BuscaminasBE.SinglePlayerGame updatedGame = SaveGame(singlePlayerGame);
+            // cuando el juego se guarda, la base crea ids para el juego y las celdas
+            singlePlayerGame.UpdateIds(updatedGame);
+
+            return singlePlayerGame;
         }
 
         private int GetPlayerId()
         {
-            Authentication auht = Authentication.GetInstance();
+            return Authentication.GetInstance().UserId;
+        }
 
-            int playerId;
-            if (auht.UserLogged)
-            {
-                playerId = auht.UserId;
-            } else
-            {
-                playerId = -1;
-            }
-            return playerId;
+        private BuscaminasBE.SinglePlayerGame SaveGame(SinglePlayerGame game)
+        {
+            return gameMapper.CreateNewGame(game.ToBEObject());
         }
     }
 }
