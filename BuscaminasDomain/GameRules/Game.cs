@@ -10,8 +10,8 @@ namespace BuscaminasDomain.GameRules
             void ShowExploitedMine(int x, int y);
             void ShowNormalMine(int x, int y);
             void ShowMineCrossedOut(int x, int y);
-            void ShowEmptyCell(int x, int y);
-            void ShowNumber(int x, int y, int number);
+            void ShowEmptyCell(int x, int y, int remainingMines);
+            void ShowNumber(int x, int y, int number, int remainingMines);
             void ShowFlag(int x, int y, int remainingMines);
             void RemoveFlag(int x, int y, int remainingMines);
             void OnLostGame();
@@ -29,7 +29,7 @@ namespace BuscaminasDomain.GameRules
 
         internal protected IGameListener listener;
 
-        private GameRestorer gameRestorer = new GameRestorer(); 
+        private GameRestoreNotifier gameRestorer = new GameRestoreNotifier(); 
         private bool isRestoredGame = false;
 
         internal Game(Board board)
@@ -79,7 +79,7 @@ namespace BuscaminasDomain.GameRules
             RestoreGameIfNeeded();
         }
 
-        public void LeftClickCell(int x, int y)
+        public void SelectCell(int x, int y)
         {
             if (CurrentUserCanPlay())
             {
@@ -87,7 +87,7 @@ namespace BuscaminasDomain.GameRules
             }
         }
 
-        public void RightClickCell(int x, int y)
+        public void FlagCell(int x, int y)
         {
             if(IsUserFlagEnabled() && CurrentUserCanPlay())
             {
@@ -104,14 +104,14 @@ namespace BuscaminasDomain.GameRules
 
         internal virtual void HandleNumberSelected(NumberCell numberCell)
         {
-            GetGameMapper().SaveSelectMove(id, timePlayedInSeconds, numberCell.ToBEObject());
-            listener?.ShowNumber(numberCell.Position.X, numberCell.Position.Y, numberCell.Number);
+            GetGameMapper().SaveSelectMove(id, timePlayedInSeconds, numberCell.ToBEObject(), board.ToBEObject());
+            listener?.ShowNumber(numberCell.Position.X, numberCell.Position.Y, numberCell.Number, board.RemainingMines);
         }
 
         internal virtual void HandleEmptyCellSelected(EmptyCell emptyCell)
         {
-            GetGameMapper().SaveSelectMove(id, timePlayedInSeconds, emptyCell.ToBEObject());
-            listener?.ShowEmptyCell(emptyCell.Position.X, emptyCell.Position.Y);
+            GetGameMapper().SaveSelectMove(id, timePlayedInSeconds, emptyCell.ToBEObject(), board.ToBEObject());
+            listener?.ShowEmptyCell(emptyCell.Position.X, emptyCell.Position.Y, board.RemainingMines);
         }
 
         internal virtual void HandleCellFlagged(BoardCell boardCell)
@@ -132,7 +132,7 @@ namespace BuscaminasDomain.GameRules
             {
                 return;
             }
-            gameRestorer.RestoreGame(board, listener);
+            gameRestorer.NotifyGameRestored(board, listener);
         }
 
         public abstract bool UserCanRestartGame();

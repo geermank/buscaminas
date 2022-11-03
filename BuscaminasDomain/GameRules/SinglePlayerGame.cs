@@ -73,10 +73,10 @@ namespace BuscaminasDomain.GameRules
                 }
                 if (next is NumberCell)
                 {
-                    listener?.ShowNumber(next.Position.X, next.Position.Y, (next as NumberCell).Number);
+                    listener?.ShowNumber(next.Position.X, next.Position.Y, (next as NumberCell).Number, 0);
                 } else if (next is EmptyCell)
                 {
-                    listener?.ShowEmptyCell(next.Position.X, next.Position.Y);
+                    listener?.ShowEmptyCell(next.Position.X, next.Position.Y, 0);
                 }
             }
 

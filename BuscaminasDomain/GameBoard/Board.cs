@@ -70,13 +70,16 @@ namespace BuscaminasDomain.GameBoard
             CheckBoardCompleted();
         }
 
-        internal void OnCellSelected(MineCell mine)
+        internal void OnCellSelected(MineCell mine, bool wasFlaggedBeforeSelection)
         {
+            UpdateFlagsAfterCellSelection(wasFlaggedBeforeSelection, true);
             OnMineUncovered(mine);
         }
 
-        internal void OnCellSelected(EmptyCell emptyCell)
+        internal void OnCellSelected(EmptyCell emptyCell, bool wasFlaggedBeforeSelection)
         {
+            UpdateFlagsAfterCellSelection(wasFlaggedBeforeSelection, false);
+
             IBoardIterator neighboursIterator = new CellNeighboursIterator(cells, emptyCell, size);
             while (neighboursIterator.HasNext())
             {
@@ -86,8 +89,9 @@ namespace BuscaminasDomain.GameBoard
             OnEmptyCellUncovered(emptyCell);
         }
 
-        internal void OnCellSelected(NumberCell number)
+        internal void OnCellSelected(NumberCell number, bool wasFlaggedBeforeSelection)
         {
+            UpdateFlagsAfterCellSelection(wasFlaggedBeforeSelection, false);
             OnNumberUncovered(number);
         }
 
@@ -130,11 +134,24 @@ namespace BuscaminasDomain.GameBoard
             }
             else
             {
-                numberOfCellsFlagged--;
-                if (cell is MineCell)
-                {
-                    numberOfMinesFlagged--;
-                }
+                DecreaseNumberOfFlags(cell is MineCell);
+            }
+        }
+
+        private void UpdateFlagsAfterCellSelection(bool cellHadAFlag, bool cellWasAMine)
+        {
+            if (cellHadAFlag)
+            {
+                DecreaseNumberOfFlags(cellWasAMine);
+            }
+        }
+
+        private void DecreaseNumberOfFlags(bool mineUnflagged)
+        {
+            numberOfCellsFlagged--;
+            if (mineUnflagged)
+            {
+                numberOfMinesFlagged--;
             }
         }
 

@@ -50,7 +50,8 @@ namespace BuscaminasDomain
                 return;
             }
             selected = true;
-            OnSelected(board);
+            OnSelected(board, flagged);
+            flagged = false;
         }
 
         internal void Flag(Board board, bool forceFlag)
@@ -63,7 +64,7 @@ namespace BuscaminasDomain
             board.OnCellFlagged(this);
         }
 
-        protected abstract void OnSelected(Board board);
+        protected abstract void OnSelected(Board board, bool wasFlagged);
 
         public virtual BuscaminasBE.BoardCell ToBEObject()
         {

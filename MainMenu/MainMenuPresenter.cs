@@ -20,7 +20,8 @@ namespace Buscaminas.MainMenu
         void ChangeUserLoggedButtonEnable(bool isEnable);
         void SetCurrentUserName(string userName);
         void LaunchGame(IGameFactory gameFactory, GameDifficulty difficulty);
-        void ShowSinglePlayerInProgressGames(List<InProgressGameViewItem> items);
+        void ShowSinglePlayerInProgressGames(List<InProgressGameViewItem> items); 
+        void ShowMultiPlayerRooms(List<InProgressGameViewItem> items);
         void ShowMessage(string message);
     }
 
@@ -52,13 +53,14 @@ namespace Buscaminas.MainMenu
         private Authentication auth;
 
         private IGamesLoader singlePlayerGamesLoader;
-        private IGamesLoader multiPlayerGamesLoader;
+        private IGamesLoader multiPlayerRoomsLoader;
 
         public MainMenuPresenter(IMainMenuForm form)
         {
             this.form = form;
             this.auth = Authentication.GetInstance();
             this.singlePlayerGamesLoader = new SinglePlayerGameLoader();
+            this.multiPlayerRoomsLoader = new MultiplayerRoomsLoader();
         }
 
         public void OnStartForm()
@@ -67,8 +69,31 @@ namespace Buscaminas.MainMenu
             if (auth.UserLogged)
             {
                 form.SetCurrentUserName(auth.UserName);
-                LoadCurrentSinglePlayerGames();
             }
+        }
+
+        public void ShowSinglePlayerGames()
+        {
+            LoadCurrentSinglePlayerGames();
+        }
+
+        public void ShowMultiplayerOpenRooms()
+        {
+            var inProgressGames = multiPlayerRoomsLoader.GetInProgressGames();
+
+            List<InProgressGameViewItem> mpgViewItems = new List<InProgressGameViewItem>();
+            foreach (BuscaminasBE.InProgressGame game in inProgressGames)
+            {
+                string title = "Multiplayer - " + game.BoardWidth + "x" + game.BoardHeight;
+                InProgressGameViewItem viewItem = new InProgressGameViewItem(game.GameId, title);
+                mpgViewItems.Add(viewItem);
+            }
+            form.ShowMultiPlayerRooms(mpgViewItems);
+        }
+
+        public void ShowMultiplayerGamesInProgess()
+        {
+
         }
 
         public void StartSingleGame(GameCheckBoxDifficulty difficulty)
@@ -137,7 +162,6 @@ namespace Buscaminas.MainMenu
                 LoadCurrentSinglePlayerGames();
                 return;
             }
-            
             SinglePlayerGameRestorer spgRestorer = new SinglePlayerGameRestorer(game);
             GameDifficulty gameDifficulty = GameDifficultyFactory.GetFromBoardSize(game.Board.Width, game.Board.Height);
             form.LaunchGame(spgRestorer, gameDifficulty);

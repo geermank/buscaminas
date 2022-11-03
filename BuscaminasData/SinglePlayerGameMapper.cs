@@ -13,17 +13,12 @@ namespace BuscaminasData
                 return null;
             }
 
-            int gameId = -1;
-
             void action()
             {
-                IDictionary<string, object> createBaseGameParams = new Dictionary<string, object>();
-                createBaseGameParams.Add("@gameStateId", newGame.GameStateId);
-                createBaseGameParams.Add("@timePlayed", newGame.TimePlayedInSeconds);
-                gameId = database.ExecuteNonQueryWithReturnValue("CREATE_BASE_GAME", createBaseGameParams);
+                CreateBaseGame(newGame);
 
                 IDictionary<string, object> createSinglePlayerParams = new Dictionary<string, object>();
-                createSinglePlayerParams.Add("@id", gameId);
+                createSinglePlayerParams.Add("@id", newGame.Id);
                 createSinglePlayerParams.Add("@userId", newGame.UserId);
                 if (newGame.ResultId != -1)
                 {
@@ -31,37 +26,10 @@ namespace BuscaminasData
                 }
                 database.ExecuteNonQuery("CREATE_SINGLE_P_GAME", createSinglePlayerParams);
 
-                IDictionary<string, object> createBoardParams = new Dictionary<string, object>();
-                createBoardParams.Add("@id", gameId);
-                createBoardParams.Add("@width", newGame.Board.Width);
-                createBoardParams.Add("@height", newGame.Board.Height);
-                createBoardParams.Add("@numberOfMines", newGame.Board.NumberOfMines);
-                createBoardParams.Add("@numberOfMinesFlagged", newGame.Board.NumberOfCellsFlagged);
-                createBoardParams.Add("@numberOfCellsFlagged", newGame.Board.NumberOfCellsFlagged);
-                database.ExecuteNonQuery("CREATE_BOARD", createBoardParams);
-
-                foreach (BuscaminasBE.BoardCell cell in newGame.Board.Cells)
-                {
-                    IDictionary<string, object> createCellParams = new Dictionary<string, object>();
-                    createCellParams.Add("@boardId", gameId);
-                    createCellParams.Add("@typeId", cell.TypeId);
-                    if (cell.Number != -1)
-                    {
-                        createCellParams.Add("@number", cell.Number);
-                    }
-                    createCellParams.Add("@flagged", cell.Flagged);
-                    createCellParams.Add("@selected", cell.Selected);
-                    createCellParams.Add("@x", cell.X);
-                    createCellParams.Add("@y", cell.Y);
-
-                    int cellId = database.ExecuteNonQueryWithReturnValue("CREATE_CELL", createCellParams);
-                    cell.Id = cellId;
-                }
+                CreateBoardAndCells(newGame.Id, newGame.Board);
             }
 
             RunDatabaseOperation(action, true);
-
-            newGame.Id = gameId;
 
             return newGame;
         }

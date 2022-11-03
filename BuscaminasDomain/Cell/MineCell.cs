@@ -15,9 +15,9 @@ namespace BuscaminasDomain
             // empty constructor
         }
 
-        protected override void OnSelected(Board board)
+        protected override void OnSelected(Board board, bool wasFlagged)
         {
-            board.OnCellSelected(this);
+            board.OnCellSelected(this, wasFlagged);
         }
 
         override public BuscaminasBE.BoardCell ToBEObject()

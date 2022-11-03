@@ -23,6 +23,15 @@ namespace Buscaminas
             panelSinglePlayerLoadNew.Visible = false;
             panelMultiplayer.Visible = true;
             panelDifficulty.Visible = false;
+            // cargar los rooms o las partidas del usuario
+            if (radioButtonOpenRooms.Checked)
+            {
+                presenter.ShowMultiplayerOpenRooms();
+            }
+            else if (radioButtonMpgInProgressGames.Checked)
+            {
+                presenter.ShowMultiplayerGamesInProgess();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -159,6 +168,33 @@ namespace Buscaminas
         public void ShowMessage(string message)
         {
             MessageBox.Show(message);
+        }
+
+        private void refrescarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // TODO
+        }
+
+        private void radioButtonOpenRooms_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonOpenRooms.Checked)
+            {
+                presenter.ShowMultiplayerOpenRooms();
+            }
+        }
+
+        private void radioButtonMpgInProgressGames_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonMpgInProgressGames.Checked)
+            {
+                MessageBox.Show("Mis juegos");
+            }
+        }
+
+        public void ShowMultiPlayerRooms(List<InProgressGameViewItem> items)
+        {
+            listBoxMpgRooms.Items.Clear();
+            listBoxMpgRooms.Items.AddRange(items.ToArray());
         }
     }
 }

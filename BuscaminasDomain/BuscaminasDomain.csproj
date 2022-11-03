@@ -53,6 +53,8 @@
     <Compile Include="Cell\EmptyCell.cs" />
     <Compile Include="GameBoard\Iterator\BoardCellsIterator.cs" />
     <Compile Include="GameDifficultyFactory.cs" />
+    <Compile Include="GameLoader\MultiplayerGamesLoader.cs" />
+    <Compile Include="GameLoader\MultiplayerRoomsLoader.cs" />
     <Compile Include="GameLoader\SinglePlayerGameLoader.cs" />
     <Compile Include="GameRules\Factories\IGameFactory.cs" />
     <Compile Include="GameRules\Factories\MultiplayerGameFactory.cs" />
@@ -62,7 +64,7 @@
     <Compile Include="GameBoard\Iterator\CellNeighboursIterator.cs" />
     <Compile Include="GameBoard\Iterator\IBoardIterator.cs" />
     <Compile Include="GameDifficulty.cs" />
-    <Compile Include="GameRules\GameRestorer.cs" />
+    <Compile Include="GameRules\GameRestoreNotifier.cs" />
     <Compile Include="GameRules\GameState.cs" />
     <Compile Include="GameRules\Result\GameResult.cs" />
     <Compile Include="GameRules\Result\MultiplayerGameResult.cs" />

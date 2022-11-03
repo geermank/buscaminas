@@ -102,12 +102,12 @@ namespace Buscaminas
 
         public void OnCellRightClick(int x, int y)
         {
-            currentGame.RightClickCell(x, y);
+            currentGame.FlagCell(x, y);
         }
 
         public void OnCellLeftClick(int x, int y)
         {
-            currentGame.LeftClickCell(x, y);
+            currentGame.SelectCell(x, y);
         }
 
         private void ConfigureFaceButton()
@@ -184,14 +184,16 @@ namespace Buscaminas
             form.ShowMineCrossedOut(x, y);
         }
 
-        public void ShowEmptyCell(int x, int y)
+        public void ShowEmptyCell(int x, int y, int remainingMines)
         {
             form.ShowEmptyCell(x, y);
+            UpdateMinesLeftCount(remainingMines);
         }
 
-        public void ShowNumber(int x, int y, int number)
+        public void ShowNumber(int x, int y, int number, int remainingMines)
         {
             form.ShowNumber(x, y, number);
+            UpdateMinesLeftCount(remainingMines);
         }
 
         public void ShowFlag(int x, int y, int remainingMines)

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BuscaminasDomain
 {
     public class Turn : IBEObjectConverter<BuscaminasBE.Turn>
     {
         private List<Player> players;
-        private int currentPlayerId = 0;
+        private int? currentPlayerId = null;
         private int turnNumber = 0;
 
         public Turn(List<Player> players)
@@ -27,7 +24,7 @@ namespace BuscaminasDomain
         public Player CurrentPlayer
         {
             get {
-                if (currentPlayerId == -1)
+                if (currentPlayerId == null)
                 {
                     return null;
                 }
@@ -44,14 +41,17 @@ namespace BuscaminasDomain
 
         public void ChangeTurn()
         {
-            if (players.Count == 1)
-            {
-                currentPlayerId = -1;
-                return;
-            }
             int index = players.IndexOf(CurrentPlayer);
             if (index == -1)
             {
+                return;
+            }
+
+            turnNumber++;
+            
+            if (players.Count == 1)
+            {
+                currentPlayerId = null;
                 return;
             }
             int nextIndex = index++;
@@ -60,7 +60,6 @@ namespace BuscaminasDomain
                 nextIndex = 0;
             }
             currentPlayerId = players[nextIndex].UserId;
-            turnNumber++;
         }
 
         public BuscaminasBE.Turn ToBEObject()

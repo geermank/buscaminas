@@ -7,12 +7,16 @@ namespace BuscaminasData
     {
         protected SqlDatabase database = new SqlDatabase(Constants.CONNECTION_STRING);
 
-        public void SaveSelectMove(int gameId, int timePlayed, BuscaminasBE.BoardCell cell)
+        public void SaveSelectMove(int gameId, 
+                                   int timePlayed, 
+                                   BuscaminasBE.BoardCell cell,
+                                   BuscaminasBE.Board board)
         {
             void saveAction()
             {
                 UpdateTimePlayed(gameId, timePlayed);
                 MarkCellAsSelected(cell);
+                UpdateBoard(gameId, board);
             }
             RunDatabaseOperation(saveAction, true);
         }
@@ -43,6 +47,44 @@ namespace BuscaminasData
             selectedCellParams.Add("@cellId", cell.Id);
             selectedCellParams.Add("@flagged", cell.Flagged);
             database.ExecuteNonQuery("UPDATE_CELL_FLAGGED", selectedCellParams);
+        }
+
+        protected void CreateBaseGame(BuscaminasBE.Game newGame)
+        {
+            IDictionary<string, object> createBaseGameParams = new Dictionary<string, object>();
+            createBaseGameParams.Add("@gameStateId", newGame.GameStateId);
+            createBaseGameParams.Add("@timePlayed", newGame.TimePlayedInSeconds);
+            newGame.Id = database.ExecuteNonQueryWithReturnValue("CREATE_BASE_GAME", createBaseGameParams);
+        }
+
+        protected void CreateBoardAndCells(int gameId, BuscaminasBE.Board board)
+        {
+            IDictionary<string, object> createBoardParams = new Dictionary<string, object>();
+            createBoardParams.Add("@id", gameId);
+            createBoardParams.Add("@width", board.Width);
+            createBoardParams.Add("@height", board.Height);
+            createBoardParams.Add("@numberOfMines", board.NumberOfMines);
+            createBoardParams.Add("@numberOfMinesFlagged", board.NumberOfCellsFlagged);
+            createBoardParams.Add("@numberOfCellsFlagged", board.NumberOfCellsFlagged);
+            database.ExecuteNonQuery("CREATE_BOARD", createBoardParams);
+
+            foreach (BuscaminasBE.BoardCell cell in board.Cells)
+            {
+                IDictionary<string, object> createCellParams = new Dictionary<string, object>();
+                createCellParams.Add("@boardId", gameId);
+                createCellParams.Add("@typeId", cell.TypeId);
+                if (cell.Number != -1)
+                {
+                    createCellParams.Add("@number", cell.Number);
+                }
+                createCellParams.Add("@flagged", cell.Flagged);
+                createCellParams.Add("@selected", cell.Selected);
+                createCellParams.Add("@x", cell.X);
+                createCellParams.Add("@y", cell.Y);
+
+                int cellId = database.ExecuteNonQueryWithReturnValue("CREATE_CELL", createCellParams);
+                cell.Id = cellId;
+            }
         }
 
         protected void RunDatabaseOperation(Action action, bool transaction = false)

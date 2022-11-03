@@ -46,25 +46,30 @@
             this.panelMultiplayer = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxMpgRooms = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.panelSinglePlayerLoadNew = new System.Windows.Forms.Panel();
-            this.listBoxInProgressSpg = new System.Windows.Forms.ListBox();
-            this.btnSpgContinue = new System.Windows.Forms.Button();
-            this.btnSpgNewGame = new System.Windows.Forms.Button();
             this.btnReturnSpgMenu = new System.Windows.Forms.Label();
+            this.btnSpgNewGame = new System.Windows.Forms.Button();
+            this.btnSpgContinue = new System.Windows.Forms.Button();
+            this.listBoxInProgressSpg = new System.Windows.Forms.ListBox();
             this.contextMenuStripRefrescarSPG = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refrescarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radioButtonMpgInProgressGames = new System.Windows.Forms.RadioButton();
+            this.radioButtonOpenRooms = new System.Windows.Forms.RadioButton();
+            this.contextMenuStripMpgRefresh = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.refrescarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelGameButton.SuspendLayout();
             this.panelDifficulty.SuspendLayout();
             this.panelMultiplayer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelSinglePlayerLoadNew.SuspendLayout();
             this.contextMenuStripRefrescarSPG.SuspendLayout();
+            this.contextMenuStripMpgRefresh.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -218,9 +223,11 @@
             // 
             // panelMultiplayer
             // 
+            this.panelMultiplayer.Controls.Add(this.radioButtonOpenRooms);
+            this.panelMultiplayer.Controls.Add(this.radioButtonMpgInProgressGames);
             this.panelMultiplayer.Controls.Add(this.button4);
             this.panelMultiplayer.Controls.Add(this.label5);
-            this.panelMultiplayer.Controls.Add(this.listBox1);
+            this.panelMultiplayer.Controls.Add(this.listBoxMpgRooms);
             this.panelMultiplayer.Controls.Add(this.button3);
             this.panelMultiplayer.Location = new System.Drawing.Point(258, 150);
             this.panelMultiplayer.Name = "panelMultiplayer";
@@ -249,13 +256,13 @@
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // listBox1
+            // listBoxMpgRooms
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(5, 4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(271, 173);
-            this.listBox1.TabIndex = 10;
+            this.listBoxMpgRooms.FormattingEnabled = true;
+            this.listBoxMpgRooms.Location = new System.Drawing.Point(5, 30);
+            this.listBoxMpgRooms.Name = "listBoxMpgRooms";
+            this.listBoxMpgRooms.Size = new System.Drawing.Size(271, 147);
+            this.listBoxMpgRooms.TabIndex = 10;
             // 
             // button3
             // 
@@ -312,20 +319,33 @@
             this.panelSinglePlayerLoadNew.Controls.Add(this.btnSpgNewGame);
             this.panelSinglePlayerLoadNew.Controls.Add(this.btnSpgContinue);
             this.panelSinglePlayerLoadNew.Controls.Add(this.listBoxInProgressSpg);
-            this.panelSinglePlayerLoadNew.Location = new System.Drawing.Point(276, 150);
+            this.panelSinglePlayerLoadNew.Location = new System.Drawing.Point(275, 143);
             this.panelSinglePlayerLoadNew.Name = "panelSinglePlayerLoadNew";
             this.panelSinglePlayerLoadNew.Size = new System.Drawing.Size(250, 288);
             this.panelSinglePlayerLoadNew.TabIndex = 11;
             this.panelSinglePlayerLoadNew.Visible = false;
             // 
-            // listBoxInProgressSpg
+            // btnReturnSpgMenu
             // 
-            this.listBoxInProgressSpg.ContextMenuStrip = this.contextMenuStripRefrescarSPG;
-            this.listBoxInProgressSpg.FormattingEnabled = true;
-            this.listBoxInProgressSpg.Location = new System.Drawing.Point(12, 11);
-            this.listBoxInProgressSpg.Name = "listBoxInProgressSpg";
-            this.listBoxInProgressSpg.Size = new System.Drawing.Size(228, 134);
-            this.listBoxInProgressSpg.TabIndex = 0;
+            this.btnReturnSpgMenu.Font = new System.Drawing.Font("DS-Digital", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturnSpgMenu.Location = new System.Drawing.Point(12, 242);
+            this.btnReturnSpgMenu.Name = "btnReturnSpgMenu";
+            this.btnReturnSpgMenu.Size = new System.Drawing.Size(228, 34);
+            this.btnReturnSpgMenu.TabIndex = 12;
+            this.btnReturnSpgMenu.Text = "Volver";
+            this.btnReturnSpgMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnReturnSpgMenu.Click += new System.EventHandler(this.btnReturnSpgMenu_Click);
+            // 
+            // btnSpgNewGame
+            // 
+            this.btnSpgNewGame.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpgNewGame.Location = new System.Drawing.Point(12, 198);
+            this.btnSpgNewGame.Name = "btnSpgNewGame";
+            this.btnSpgNewGame.Size = new System.Drawing.Size(228, 41);
+            this.btnSpgNewGame.TabIndex = 13;
+            this.btnSpgNewGame.Text = "Nueva partida";
+            this.btnSpgNewGame.UseVisualStyleBackColor = true;
+            this.btnSpgNewGame.Click += new System.EventHandler(this.btnSpgNewGame_Click);
             // 
             // btnSpgContinue
             // 
@@ -339,41 +359,66 @@
             this.btnSpgContinue.UseVisualStyleBackColor = true;
             this.btnSpgContinue.Click += new System.EventHandler(this.btnSpgContinue_Click);
             // 
-            // btnSpgNewGame
+            // listBoxInProgressSpg
             // 
-            this.btnSpgNewGame.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSpgNewGame.Location = new System.Drawing.Point(12, 198);
-            this.btnSpgNewGame.Name = "btnSpgNewGame";
-            this.btnSpgNewGame.Size = new System.Drawing.Size(228, 41);
-            this.btnSpgNewGame.TabIndex = 13;
-            this.btnSpgNewGame.Text = "Nueva partida";
-            this.btnSpgNewGame.UseVisualStyleBackColor = true;
-            this.btnSpgNewGame.Click += new System.EventHandler(this.btnSpgNewGame_Click);
-            // 
-            // btnReturnSpgMenu
-            // 
-            this.btnReturnSpgMenu.Font = new System.Drawing.Font("DS-Digital", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturnSpgMenu.Location = new System.Drawing.Point(12, 242);
-            this.btnReturnSpgMenu.Name = "btnReturnSpgMenu";
-            this.btnReturnSpgMenu.Size = new System.Drawing.Size(228, 34);
-            this.btnReturnSpgMenu.TabIndex = 12;
-            this.btnReturnSpgMenu.Text = "Volver";
-            this.btnReturnSpgMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnReturnSpgMenu.Click += new System.EventHandler(this.btnReturnSpgMenu_Click);
+            this.listBoxInProgressSpg.ContextMenuStrip = this.contextMenuStripRefrescarSPG;
+            this.listBoxInProgressSpg.FormattingEnabled = true;
+            this.listBoxInProgressSpg.Location = new System.Drawing.Point(12, 11);
+            this.listBoxInProgressSpg.Name = "listBoxInProgressSpg";
+            this.listBoxInProgressSpg.Size = new System.Drawing.Size(228, 134);
+            this.listBoxInProgressSpg.TabIndex = 0;
             // 
             // contextMenuStripRefrescarSPG
             // 
             this.contextMenuStripRefrescarSPG.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.refrescarToolStripMenuItem});
             this.contextMenuStripRefrescarSPG.Name = "contextMenuStripRefrescarSPG";
-            this.contextMenuStripRefrescarSPG.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStripRefrescarSPG.Size = new System.Drawing.Size(123, 26);
             // 
             // refrescarToolStripMenuItem
             // 
             this.refrescarToolStripMenuItem.Name = "refrescarToolStripMenuItem";
-            this.refrescarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refrescarToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.refrescarToolStripMenuItem.Text = "Refrescar";
             this.refrescarToolStripMenuItem.Click += new System.EventHandler(this.refrescarToolStripMenuItem_Click);
+            // 
+            // radioButtonMpgInProgressGames
+            // 
+            this.radioButtonMpgInProgressGames.AutoSize = true;
+            this.radioButtonMpgInProgressGames.Location = new System.Drawing.Point(166, 7);
+            this.radioButtonMpgInProgressGames.Name = "radioButtonMpgInProgressGames";
+            this.radioButtonMpgInProgressGames.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonMpgInProgressGames.TabIndex = 12;
+            this.radioButtonMpgInProgressGames.Text = "Mis partidas";
+            this.radioButtonMpgInProgressGames.UseVisualStyleBackColor = true;
+            this.radioButtonMpgInProgressGames.CheckedChanged += new System.EventHandler(this.radioButtonMpgInProgressGames_CheckedChanged);
+            // 
+            // radioButtonOpenRooms
+            // 
+            this.radioButtonOpenRooms.AutoSize = true;
+            this.radioButtonOpenRooms.Checked = true;
+            this.radioButtonOpenRooms.Location = new System.Drawing.Point(52, 7);
+            this.radioButtonOpenRooms.Name = "radioButtonOpenRooms";
+            this.radioButtonOpenRooms.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonOpenRooms.TabIndex = 13;
+            this.radioButtonOpenRooms.TabStop = true;
+            this.radioButtonOpenRooms.Text = "Salas";
+            this.radioButtonOpenRooms.UseVisualStyleBackColor = true;
+            this.radioButtonOpenRooms.CheckedChanged += new System.EventHandler(this.radioButtonOpenRooms_CheckedChanged);
+            // 
+            // contextMenuStripMpgRefresh
+            // 
+            this.contextMenuStripMpgRefresh.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refrescarToolStripMenuItem1});
+            this.contextMenuStripMpgRefresh.Name = "contextMenuStripMpgRefresh";
+            this.contextMenuStripMpgRefresh.Size = new System.Drawing.Size(123, 26);
+            // 
+            // refrescarToolStripMenuItem1
+            // 
+            this.refrescarToolStripMenuItem1.Name = "refrescarToolStripMenuItem1";
+            this.refrescarToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.refrescarToolStripMenuItem1.Text = "Refrescar";
+            this.refrescarToolStripMenuItem1.Click += new System.EventHandler(this.refrescarToolStripMenuItem1_Click);
             // 
             // MainMenuForm
             // 
@@ -401,9 +446,11 @@
             this.panelDifficulty.ResumeLayout(false);
             this.panelDifficulty.PerformLayout();
             this.panelMultiplayer.ResumeLayout(false);
+            this.panelMultiplayer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelSinglePlayerLoadNew.ResumeLayout(false);
             this.contextMenuStripRefrescarSPG.ResumeLayout(false);
+            this.contextMenuStripMpgRefresh.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,7 +475,7 @@
         private System.Windows.Forms.Panel panelMultiplayer;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxMpgRooms;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegister;
@@ -440,5 +487,9 @@
         private System.Windows.Forms.Label btnReturnSpgMenu;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripRefrescarSPG;
         private System.Windows.Forms.ToolStripMenuItem refrescarToolStripMenuItem;
+        private System.Windows.Forms.RadioButton radioButtonOpenRooms;
+        private System.Windows.Forms.RadioButton radioButtonMpgInProgressGames;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripMpgRefresh;
+        private System.Windows.Forms.ToolStripMenuItem refrescarToolStripMenuItem1;
     }
 }

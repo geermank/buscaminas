@@ -2,9 +2,9 @@
 {
     public class Turn
     {
-        private int currentPlayerId;
+        private int? currentPlayerId;
 
-        public int CurrentPlayerId
+        public int? CurrentPlayerId
         {
             get { return currentPlayerId; }
             set { currentPlayerId = value; }
