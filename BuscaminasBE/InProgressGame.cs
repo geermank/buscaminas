@@ -41,5 +41,13 @@
             get { return remainingMines; }
             set { remainingMines = value; }
         }
+
+        private string gameOwnerName;
+
+        public string GameOwnerName
+        {
+            get { return gameOwnerName; }
+            set { gameOwnerName = value; }
+        }
     }
 }

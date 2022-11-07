@@ -54,6 +54,7 @@ namespace Buscaminas.MainMenu
 
         private IGamesLoader singlePlayerGamesLoader;
         private IGamesLoader multiPlayerRoomsLoader;
+        private IGamesLoader multiPlayerInProgressGamesLoader;
 
         public MainMenuPresenter(IMainMenuForm form)
         {
@@ -61,6 +62,7 @@ namespace Buscaminas.MainMenu
             this.auth = Authentication.GetInstance();
             this.singlePlayerGamesLoader = new SinglePlayerGameLoader();
             this.multiPlayerRoomsLoader = new MultiplayerRoomsLoader();
+            this.multiPlayerInProgressGamesLoader = new MultiplayerInProgressGamesLoader();
         }
 
         public void OnStartForm()
@@ -93,7 +95,25 @@ namespace Buscaminas.MainMenu
 
         public void ShowMultiplayerGamesInProgess()
         {
+            var inProgressGames = multiPlayerInProgressGamesLoader.GetInProgressGames();
 
+            List<InProgressGameViewItem> mpgViewItems = new List<InProgressGameViewItem>();
+            foreach (BuscaminasBE.InProgressGame game in inProgressGames)
+            {
+                string playerTurn;
+                if (string.IsNullOrEmpty(game.GameOwnerName))
+                {
+                    playerTurn = "Esperando jugador";
+                } else
+                {
+                    playerTurn = game.GameOwnerName;
+                }
+
+                string title = "Multiplayer - " + game.BoardWidth + "x" + game.BoardHeight + " - Turno de: " + playerTurn;
+                InProgressGameViewItem viewItem = new InProgressGameViewItem(game.GameId, title);
+                mpgViewItems.Add(viewItem);
+            }
+            form.ShowMultiPlayerRooms(mpgViewItems);
         }
 
         public void StartSingleGame(GameCheckBoxDifficulty difficulty)

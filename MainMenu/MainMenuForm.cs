@@ -187,7 +187,7 @@ namespace Buscaminas
         {
             if (radioButtonMpgInProgressGames.Checked)
             {
-                MessageBox.Show("Mis juegos");
+                presenter.ShowMultiplayerGamesInProgess();
             }
         }
 

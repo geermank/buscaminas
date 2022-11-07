@@ -68,44 +68,7 @@ namespace BuscaminasData
             BuscaminasBE.SinglePlayerGame game = new BuscaminasBE.SinglePlayerGame();
             void loadGameAction()
             {
-                BuscaminasBE.Board board = new BuscaminasBE.Board();
-
-                IDictionary<string, object> loadBoardParams = new Dictionary<string, object>();
-                loadBoardParams.Add("@gameId", gameId);
-                DataTable boardTable = database.ReadDisconnected("LOAD_GAME_BOARD", loadBoardParams);
-                foreach (DataRow row in boardTable.Rows)
-                {
-                    board.NumberOfMines = int.Parse(row["numberOfMines"].ToString());
-                    board.NumberOfMinesFlagged = int.Parse(row["numberOfMinesFlagged"].ToString());
-                    board.NumberOfCellsFlagged = int.Parse(row["numberOfCellsFlagged"].ToString());
-                    board.Width = int.Parse(row["width"].ToString());
-                    board.Height = int.Parse(row["height"].ToString());
-                    board.Cells = new BuscaminasBE.BoardCell[board.Width, board.Height];
-                }
-
-                IDictionary<string, object> loadCellsParams = new Dictionary<string, object>();
-                loadCellsParams.Add("@boardId", gameId);
-                DataTable cellsTable = database.ReadDisconnected("LOAD_GAME_CELLS", loadCellsParams);
-                foreach(DataRow row in cellsTable.Rows)
-                {
-                    BuscaminasBE.BoardCell cell = new BuscaminasBE.BoardCell();
-                    cell.Id = int.Parse(row["id"].ToString());
-                    cell.X = int.Parse(row["x"].ToString());
-                    cell.Y = int.Parse(row["y"].ToString());
-
-                    var numberColumn = row["number"].ToString();
-                    if (!string.IsNullOrEmpty(numberColumn))
-                    {
-                        cell.Number = int.Parse(numberColumn);
-                    }
-
-                    cell.Flagged = int.Parse(row["flagged"].ToString());
-                    cell.Selected = int.Parse(row["selected"].ToString());
-                    cell.BoardId = gameId;
-                    cell.TypeId = int.Parse(row["typeId"].ToString());
-
-                    board.Cells[cell.X, cell.Y] = cell;
-                }
+                BuscaminasBE.Board board = LoadBoardAndCells(gameId);
 
                 IDictionary<string, object> loadSpgParams = new Dictionary<string, object>();
                 loadSpgParams.Add("@gameId", gameId);

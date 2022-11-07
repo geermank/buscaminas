@@ -16,7 +16,7 @@ namespace BuscaminasDomain.GameLoader
 
         public Game LoadGame(int gameId)
         {
-            return null;
+            return mapper.LoadMultiplayerGame(gameId);
         }
     }
 }

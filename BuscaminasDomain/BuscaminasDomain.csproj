@@ -53,7 +53,9 @@
     <Compile Include="Cell\EmptyCell.cs" />
     <Compile Include="GameBoard\Iterator\BoardCellsIterator.cs" />
     <Compile Include="GameDifficultyFactory.cs" />
+    <Compile Include="GameLoader\MultiplayerGamePlayerAdder.cs" />
     <Compile Include="GameLoader\MultiplayerGamesLoader.cs" />
+    <Compile Include="GameLoader\MultiplayerInProgressGamesLoader.cs" />
     <Compile Include="GameLoader\MultiplayerRoomsLoader.cs" />
     <Compile Include="GameLoader\SinglePlayerGameLoader.cs" />
     <Compile Include="GameRules\Factories\IGameFactory.cs" />
