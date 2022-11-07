@@ -56,6 +56,8 @@ namespace Buscaminas.MainMenu
         private IGamesLoader multiPlayerRoomsLoader;
         private IGamesLoader multiPlayerInProgressGamesLoader;
 
+        private MultiplayerGamePlayerAdder multiplayerGamePlayerAdder;
+
         public MainMenuPresenter(IMainMenuForm form)
         {
             this.form = form;
@@ -63,6 +65,7 @@ namespace Buscaminas.MainMenu
             this.singlePlayerGamesLoader = new SinglePlayerGameLoader();
             this.multiPlayerRoomsLoader = new MultiplayerRoomsLoader();
             this.multiPlayerInProgressGamesLoader = new MultiplayerInProgressGamesLoader();
+            this.multiplayerGamePlayerAdder = new MultiplayerGamePlayerAdder();
         }
 
         public void OnStartForm()
@@ -116,7 +119,7 @@ namespace Buscaminas.MainMenu
             form.ShowMultiPlayerRooms(mpgViewItems);
         }
 
-        public void StartSingleGame(GameCheckBoxDifficulty difficulty)
+        public void StartNewSinglePlayerGame(GameCheckBoxDifficulty difficulty)
         {
             GameDifficulty gameDifficulty;
             if (difficulty == GameCheckBoxDifficulty.EASY)
@@ -134,7 +137,7 @@ namespace Buscaminas.MainMenu
             form.LaunchGame(new SinglePlayerGameFactory(), gameDifficulty);
         }
 
-        public void StartMultiplayerGame()
+        public void StartNewMultiplayerGame()
         {
             form.LaunchGame(
                 new MultiplayerGameFactory(),
@@ -142,31 +145,32 @@ namespace Buscaminas.MainMenu
             );
         }
 
+        public void JoinMultiplayerGame(InProgressGameViewItem game)
+        { 
+            if (game == null)
+            {
+                return;
+            }
+            try
+            {
+                BuscaminasBE.MultiplayerGame multiplayerGame = multiplayerGamePlayerAdder.AddPlayerToGame(game.GameId);
+
+            }
+            catch (Exception ex)
+            {
+                form.ShowMessage(ex.Message);
+            }
+        }
+
         public void OnUserLoggedInOrRegistered()
         {
             form.ChangeUserLoggedButtonEnable(true);
             form.SetCurrentUserName(auth.UserName);
-            LoadCurrentSinglePlayerGames();
         }
 
         public void RefreshSinglePlayerGames()
         {
             LoadCurrentSinglePlayerGames();
-        }
-
-        private void LoadCurrentSinglePlayerGames()
-        {
-            var inProgressGames = singlePlayerGamesLoader.GetInProgressGames();
-
-            List<InProgressGameViewItem> spgViewItems = new List<InProgressGameViewItem>();
-            foreach(BuscaminasBE.InProgressGame game in inProgressGames)
-            {
-                string title = "Single player - " + game.BoardWidth + "x" + game.BoardHeight + 
-                    " - " + game.RemaningMines + " minas restantes"; 
-                InProgressGameViewItem viewItem = new InProgressGameViewItem(game.GameId, title);
-                spgViewItems.Add(viewItem);
-            }
-            form.ShowSinglePlayerInProgressGames(spgViewItems);
         }
 
         public void ContinueSinglePlayerGame(InProgressGameViewItem selectedGame)
@@ -185,6 +189,21 @@ namespace Buscaminas.MainMenu
             SinglePlayerGameRestorer spgRestorer = new SinglePlayerGameRestorer(game);
             GameDifficulty gameDifficulty = GameDifficultyFactory.GetFromBoardSize(game.Board.Width, game.Board.Height);
             form.LaunchGame(spgRestorer, gameDifficulty);
+        }
+
+        private void LoadCurrentSinglePlayerGames()
+        {
+            var inProgressGames = singlePlayerGamesLoader.GetInProgressGames();
+
+            List<InProgressGameViewItem> spgViewItems = new List<InProgressGameViewItem>();
+            foreach (BuscaminasBE.InProgressGame game in inProgressGames)
+            {
+                string title = "Single player - " + game.BoardWidth + "x" + game.BoardHeight +
+                    " - " + game.RemaningMines + " minas restantes";
+                InProgressGameViewItem viewItem = new InProgressGameViewItem(game.GameId, title);
+                spgViewItems.Add(viewItem);
+            }
+            form.ShowSinglePlayerInProgressGames(spgViewItems);
         }
     }
 }

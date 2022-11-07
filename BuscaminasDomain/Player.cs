@@ -26,6 +26,13 @@
 
         }
 
+        public Player(BuscaminasBE.Player player)
+        {
+            this.userId = player.UserId;
+            this.name = player.Name;
+            this.score = player.Score;
+        }
+
         public Player(BuscaminasBE.User user)
         {
             name = user.Name;

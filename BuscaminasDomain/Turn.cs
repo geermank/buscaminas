@@ -14,7 +14,7 @@ namespace BuscaminasDomain
             this.currentPlayerId = players[0].UserId;
         }
 
-        public Turn(List<Player> players, int currentPlayerId, int turnNumber)
+        public Turn(List<Player> players, int? currentPlayerId, int turnNumber)
         {
             this.players = players;
             this.currentPlayerId = currentPlayerId;

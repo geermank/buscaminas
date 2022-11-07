@@ -40,6 +40,8 @@ namespace Buscaminas
             panelSinglePlayerLoadNew.Visible = true;
             panelMultiplayer.Visible = false;
             panelDifficulty.Visible = false;
+
+            presenter.ShowSinglePlayerGames();
         }
 
         private void buttonDiffReturn_Click(object sender, EventArgs e)
@@ -65,7 +67,7 @@ namespace Buscaminas
             {
                 selectedCheckbox = GameCheckBoxDifficulty.HARD;
             }
-            presenter.StartSingleGame(selectedCheckbox);
+            presenter.StartNewSinglePlayerGame(selectedCheckbox);
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -126,7 +128,7 @@ namespace Buscaminas
 
         private void button3_Click(object sender, EventArgs e)
         {
-            presenter.StartMultiplayerGame();
+            presenter.StartNewMultiplayerGame();
         }
 
         private void btnSpgNewGame_Click(object sender, EventArgs e)

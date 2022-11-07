@@ -33,6 +33,17 @@ namespace BuscaminasDomain.GameRules
             this.gameState = GameState.LOOKING_FOR_RIVAL;
         }
 
+        internal MultiPlayerGame(Board board,
+                                 List<Player> players,
+                                 Turn turn,
+                                 int gameId,
+                                 GameState gameState,
+                                 int timePlayedInSeconds) : base(board, gameId, gameState, timePlayedInSeconds)
+        {
+            this.players = players;
+            this.turn = turn;
+        }
+
         public BuscaminasBE.MultiplayerGame ToBEObject()
         {
             var multiplayerGame = new BuscaminasBE.MultiplayerGame();
