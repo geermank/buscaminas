@@ -29,7 +29,12 @@ namespace BuscaminasData
         {
             void action()
             {
-                database.ExecuteNonQuery()
+                IDictionary<string, object> gameResultParams = new Dictionary<string, object>();
+                gameResultParams.Add("@gameId", gameId);
+                gameResultParams.Add("@resultId", resultId);
+                gameResultParams.Add("@winner", winner);
+
+                database.ExecuteNonQuery("SET_MPG_RESULT", gameResultParams);
             }
             RunDatabaseOperation(action);
         }

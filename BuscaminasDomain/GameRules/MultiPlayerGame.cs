@@ -1,6 +1,8 @@
 ﻿using BuscaminasAuth;
 using BuscaminasData;
 using BuscaminasDomain.GameBoard;
+using BuscaminasDomain.GameRules.Result;
+using System;
 using System.Collections.Generic;
 
 namespace BuscaminasDomain.GameRules
@@ -141,7 +143,11 @@ namespace BuscaminasDomain.GameRules
         {
             base.HandleBoardCompleted();
 
-            gameMapper.
+            int gameResult = (int) GetGameResult();
+            int? winnerId = GetWinner()?.UserId;
+
+            gameMapper.SetGameResult(Id, gameResult, winnerId);
+            // TODO update game in db apart from result
         }
 
         private void ResetMinesUncoveredCounter()
@@ -170,6 +176,26 @@ namespace BuscaminasDomain.GameRules
         private Player GetCurrentUserPlayer()
         {
             return players.Find(p => p.UserId == Authentication.GetInstance().UserId);
+        }
+
+        private GameResult GetGameResult() {
+            GameResult gameResult;
+            if (GetWinner() == null)
+            {
+                gameResult = GameResult.TIE;
+            }
+            else
+            {
+                gameResult = GameResult.WIN;
+            }
+            return gameResult;
+        }
+
+        private Player GetWinner()
+        {
+            Player p1 = players[0]; 
+            Player p2 = players[1];
+            return p1.Oust(p2);
         }
     }
 }

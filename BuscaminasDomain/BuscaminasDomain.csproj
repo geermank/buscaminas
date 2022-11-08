@@ -82,6 +82,7 @@
     <Compile Include="GameRules\SinglePlayerGame.cs" />
     <Compile Include="IBEObjectConverter.cs" />
     <Compile Include="Turn.cs" />
+    <Compile Include="Utils\ICompetitor.cs" />
     <Compile Include="Utils\IntegerToBoolConverter.cs" />
   </ItemGroup>
   <ItemGroup>

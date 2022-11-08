@@ -1,6 +1,8 @@
-﻿namespace BuscaminasDomain
+﻿using BuscaminasDomain.Utils;
+
+namespace BuscaminasDomain
 {
-    public class Player : IBEObjectConverter<BuscaminasBE.Player>
+    public class Player : IBEObjectConverter<BuscaminasBE.Player>, ICompetitor<Player>
     {
         private int userId;
         private string name;
@@ -58,6 +60,20 @@
             player.UserId = userId;
             player.Score = score;
             return player;
+        }
+
+        public Player Oust(Player rival)
+        {
+            Player champion = null;
+            if (rival.Score > Score)
+            {
+                champion = rival;
+            }
+            else if (rival.Score < Score)
+            {
+                champion = this;
+            }
+            return champion;
         }
     }
 }
