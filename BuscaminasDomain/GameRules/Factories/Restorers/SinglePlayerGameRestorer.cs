@@ -1,7 +1,7 @@
 ﻿using BuscaminasDomain.GameRules.Factories.Restorers;
 using BuscaminasDomain.GameRules.Result;
 
-namespace BuscaminasDomain.GameRules.Factories
+namespace BuscaminasDomain.GameRules.Factories.Restorers
 {
     public class SinglePlayerGameRestorer : GameRestorer
     {

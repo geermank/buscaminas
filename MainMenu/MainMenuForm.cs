@@ -198,5 +198,17 @@ namespace Buscaminas
             listBoxMpgRooms.Items.Clear();
             listBoxMpgRooms.Items.AddRange(items.ToArray());
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            InProgressGameViewItem selectedGame = (InProgressGameViewItem) listBoxMpgRooms.SelectedItem;
+            if (radioButtonOpenRooms.Checked)
+            {
+                presenter.JoinMultiplayerGame(selectedGame);
+            } else
+            {
+                presenter.LoadMultiplayerGame(selectedGame);
+            }
+        }
     }
 }

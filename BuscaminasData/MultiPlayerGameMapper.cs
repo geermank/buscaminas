@@ -25,6 +25,15 @@ namespace BuscaminasData
             return newGame;
         }
 
+        public void SetGameResult(int gameId, int resultId, int? winner)
+        {
+            void action()
+            {
+                database.ExecuteNonQuery()
+            }
+            RunDatabaseOperation(action);
+        }
+
         public void UpdateTurn(int turnId, BuscaminasBE.Turn turn)
         {
             void action()
@@ -157,7 +166,7 @@ namespace BuscaminasData
             IDictionary<string, object> mpgParams = new Dictionary<string, object>();
             mpgParams.Add("@gameId", gameId);
             DataTable table = database.ReadDisconnected("LOAD_MULTIPLAYER_GAME", mpgParams);
-            foreach(DataRow row in table.Rows)
+            foreach (DataRow row in table.Rows)
             {
                 game.GameStateId = int.Parse(row["gameStateId"].ToString());
                 game.TimePlayedInSeconds = int.Parse(row["timePlayedInSeconds"].ToString());
@@ -169,10 +178,32 @@ namespace BuscaminasData
                 {
                     turn.CurrentPlayerId = int.Parse(currentPlayerId);
                 }
+                game.Turn = turn;
+                game.Players = LoadPlayers(gameId);
             }
 
             return game;
         }
 
+        private List<BuscaminasBE.Player> LoadPlayers(int gameId)
+        {
+            List<BuscaminasBE.Player> players = new List<BuscaminasBE.Player>();
+
+            IDictionary<string, object> playerParams = new Dictionary<string, object>();
+            playerParams.Add("@gameId", gameId);
+
+            DataTable table = database.ReadDisconnected("LOAD_PLAYERS", playerParams);
+            foreach(DataRow row in table.Rows)
+            {
+                BuscaminasBE.Player p = new BuscaminasBE.Player();
+                p.Name = row["name"].ToString();
+                p.Score = int.Parse(row["score"].ToString());
+                p.GameId = int.Parse(row["gameId"].ToString());
+                p.UserId = int.Parse(row["userId"].ToString());
+                players.Add(p);
+            }
+
+            return players;
+        }
     }
 }

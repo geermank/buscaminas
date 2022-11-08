@@ -137,6 +137,13 @@ namespace BuscaminasDomain.GameRules
             return turn.CanPlay(GetCurrentUserPlayer());
         }
 
+        protected override void HandleBoardCompleted()
+        {
+            base.HandleBoardCompleted();
+
+            gameMapper.
+        }
+
         private void ResetMinesUncoveredCounter()
         {
             minesUncoveredThisTurn = 0;
@@ -157,6 +164,7 @@ namespace BuscaminasDomain.GameRules
         {
             turn.CurrentPlayer?.IncrementScore();
             gameMapper.UpdatePlayerScore(id, turn.CurrentPlayer?.UserId, turn.CurrentPlayer?.Score);
+            listener?.ShowPlayers(players[0], players[1]);
         }
 
         private Player GetCurrentUserPlayer()

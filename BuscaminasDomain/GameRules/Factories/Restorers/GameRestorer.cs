@@ -13,6 +13,7 @@ namespace BuscaminasDomain.GameRules.Factories.Restorers
         {
             this.gameFactory = gameFactory;
             this.gameToRestore = gameToRestore;
+            this.boardRestorer = new BoardRestorer();
         } 
 
         public Game CreateGame(GameDifficulty difficulty)

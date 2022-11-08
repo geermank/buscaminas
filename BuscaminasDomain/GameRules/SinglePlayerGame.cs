@@ -63,6 +63,8 @@ namespace BuscaminasDomain.GameRules
 
         protected override void HandleBoardCompleted()
         {
+            base.HandleBoardCompleted();
+
             IBoardIterator iterator = board.GetIterator();
             while (iterator.HasNext())
             {
@@ -80,12 +82,9 @@ namespace BuscaminasDomain.GameRules
                 }
             }
 
-            gameState = GameState.FINISHED;
             result = GameResult.WIN;
 
             gameMapper.SaveGame(ToBEObject(), null);
-
-            base.HandleBoardCompleted();
         }
 
         protected override bool CurrentUserCanPlay()

@@ -3,6 +3,7 @@ using BuscaminasDomain;
 using BuscaminasDomain.GameLoader;
 using BuscaminasDomain.GameRules;
 using BuscaminasDomain.GameRules.Factories;
+using BuscaminasDomain.GameRules.Factories.Restorers;
 using System;
 using System.Collections.Generic;
 
@@ -141,7 +142,7 @@ namespace Buscaminas.MainMenu
         {
             form.LaunchGame(
                 new MultiplayerGameFactory(),
-                GameDifficultyFactory.CreateHardGame()
+                GameDifficultyFactory.CreateEasyGame()
             );
         }
 
@@ -154,7 +155,7 @@ namespace Buscaminas.MainMenu
             try
             {
                 BuscaminasBE.MultiplayerGame multiplayerGame = multiplayerGamePlayerAdder.AddPlayerToGame(game.GameId);
-
+                LaunchMultiplayerGame(multiplayerGame);
             }
             catch (Exception ex)
             {
@@ -191,6 +192,22 @@ namespace Buscaminas.MainMenu
             form.LaunchGame(spgRestorer, gameDifficulty);
         }
 
+        public void LoadMultiplayerGame(InProgressGameViewItem selectedGameItem)
+        {
+            if (selectedGameItem == null)
+            {
+                return;
+            }
+            try
+            {
+                BuscaminasBE.MultiplayerGame game = (BuscaminasBE.MultiplayerGame) multiPlayerInProgressGamesLoader.LoadGame(selectedGameItem.GameId);
+                LaunchMultiplayerGame(game);
+            } catch(Exception ex)
+            {
+                form.ShowMessage(ex.Message);
+            }
+        }
+
         private void LoadCurrentSinglePlayerGames()
         {
             var inProgressGames = singlePlayerGamesLoader.GetInProgressGames();
@@ -204,6 +221,13 @@ namespace Buscaminas.MainMenu
                 spgViewItems.Add(viewItem);
             }
             form.ShowSinglePlayerInProgressGames(spgViewItems);
+        }
+
+        private void LaunchMultiplayerGame(BuscaminasBE.MultiplayerGame game)
+        {
+            GameRestorer gameRestorer = new MultiplayerGameRestorer(game);
+            GameDifficulty gameDifficulty = GameDifficultyFactory.GetFromBoardSize(game.Board.Width, game.Board.Height);
+            form.LaunchGame(gameRestorer, gameDifficulty);
         }
     }
 }

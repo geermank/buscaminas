@@ -38,7 +38,6 @@ namespace BuscaminasDomain
                 currentPlayerId == player.UserId && players.Count == 1 && turnNumber == 0;
         }
 
-
         public void ChangeTurn()
         {
             int index = players.IndexOf(CurrentPlayer);
@@ -54,7 +53,7 @@ namespace BuscaminasDomain
                 currentPlayerId = null;
                 return;
             }
-            int nextIndex = index++;
+            int nextIndex = index + 1;
             if (nextIndex >= players.Count)
             {
                 nextIndex = 0;

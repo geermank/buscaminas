@@ -1,8 +1,7 @@
 ﻿using BuscaminasDomain.GameBoard;
-using BuscaminasDomain.GameRules.Factories.Restorers;
 using System.Collections.Generic;
 
-namespace BuscaminasDomain.GameRules.Factories
+namespace BuscaminasDomain.GameRules.Factories.Restorers
 {
     public class MultiplayerGameRestorer : GameRestorer
     {

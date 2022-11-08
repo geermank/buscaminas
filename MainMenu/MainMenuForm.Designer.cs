@@ -44,6 +44,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.radioButtonEasy = new System.Windows.Forms.RadioButton();
             this.panelMultiplayer = new System.Windows.Forms.Panel();
+            this.radioButtonOpenRooms = new System.Windows.Forms.RadioButton();
+            this.radioButtonMpgInProgressGames = new System.Windows.Forms.RadioButton();
             this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.listBoxMpgRooms = new System.Windows.Forms.ListBox();
@@ -59,8 +61,6 @@
             this.listBoxInProgressSpg = new System.Windows.Forms.ListBox();
             this.contextMenuStripRefrescarSPG = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refrescarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.radioButtonMpgInProgressGames = new System.Windows.Forms.RadioButton();
-            this.radioButtonOpenRooms = new System.Windows.Forms.RadioButton();
             this.contextMenuStripMpgRefresh = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refrescarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelGameButton.SuspendLayout();
@@ -229,11 +229,35 @@
             this.panelMultiplayer.Controls.Add(this.label5);
             this.panelMultiplayer.Controls.Add(this.listBoxMpgRooms);
             this.panelMultiplayer.Controls.Add(this.button3);
-            this.panelMultiplayer.Location = new System.Drawing.Point(258, 150);
+            this.panelMultiplayer.Location = new System.Drawing.Point(259, 146);
             this.panelMultiplayer.Name = "panelMultiplayer";
             this.panelMultiplayer.Size = new System.Drawing.Size(279, 298);
             this.panelMultiplayer.TabIndex = 7;
             this.panelMultiplayer.Visible = false;
+            // 
+            // radioButtonOpenRooms
+            // 
+            this.radioButtonOpenRooms.AutoSize = true;
+            this.radioButtonOpenRooms.Checked = true;
+            this.radioButtonOpenRooms.Location = new System.Drawing.Point(52, 7);
+            this.radioButtonOpenRooms.Name = "radioButtonOpenRooms";
+            this.radioButtonOpenRooms.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonOpenRooms.TabIndex = 13;
+            this.radioButtonOpenRooms.TabStop = true;
+            this.radioButtonOpenRooms.Text = "Salas";
+            this.radioButtonOpenRooms.UseVisualStyleBackColor = true;
+            this.radioButtonOpenRooms.CheckedChanged += new System.EventHandler(this.radioButtonOpenRooms_CheckedChanged);
+            // 
+            // radioButtonMpgInProgressGames
+            // 
+            this.radioButtonMpgInProgressGames.AutoSize = true;
+            this.radioButtonMpgInProgressGames.Location = new System.Drawing.Point(166, 7);
+            this.radioButtonMpgInProgressGames.Name = "radioButtonMpgInProgressGames";
+            this.radioButtonMpgInProgressGames.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonMpgInProgressGames.TabIndex = 12;
+            this.radioButtonMpgInProgressGames.Text = "Mis partidas";
+            this.radioButtonMpgInProgressGames.UseVisualStyleBackColor = true;
+            this.radioButtonMpgInProgressGames.CheckedChanged += new System.EventHandler(this.radioButtonMpgInProgressGames_CheckedChanged);
             // 
             // button4
             // 
@@ -244,6 +268,7 @@
             this.button4.TabIndex = 11;
             this.button4.Text = "Unirme";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label5
             // 
@@ -381,30 +406,6 @@
             this.refrescarToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.refrescarToolStripMenuItem.Text = "Refrescar";
             this.refrescarToolStripMenuItem.Click += new System.EventHandler(this.refrescarToolStripMenuItem_Click);
-            // 
-            // radioButtonMpgInProgressGames
-            // 
-            this.radioButtonMpgInProgressGames.AutoSize = true;
-            this.radioButtonMpgInProgressGames.Location = new System.Drawing.Point(166, 7);
-            this.radioButtonMpgInProgressGames.Name = "radioButtonMpgInProgressGames";
-            this.radioButtonMpgInProgressGames.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonMpgInProgressGames.TabIndex = 12;
-            this.radioButtonMpgInProgressGames.Text = "Mis partidas";
-            this.radioButtonMpgInProgressGames.UseVisualStyleBackColor = true;
-            this.radioButtonMpgInProgressGames.CheckedChanged += new System.EventHandler(this.radioButtonMpgInProgressGames_CheckedChanged);
-            // 
-            // radioButtonOpenRooms
-            // 
-            this.radioButtonOpenRooms.AutoSize = true;
-            this.radioButtonOpenRooms.Checked = true;
-            this.radioButtonOpenRooms.Location = new System.Drawing.Point(52, 7);
-            this.radioButtonOpenRooms.Name = "radioButtonOpenRooms";
-            this.radioButtonOpenRooms.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonOpenRooms.TabIndex = 13;
-            this.radioButtonOpenRooms.TabStop = true;
-            this.radioButtonOpenRooms.Text = "Salas";
-            this.radioButtonOpenRooms.UseVisualStyleBackColor = true;
-            this.radioButtonOpenRooms.CheckedChanged += new System.EventHandler(this.radioButtonOpenRooms_CheckedChanged);
             // 
             // contextMenuStripMpgRefresh
             // 

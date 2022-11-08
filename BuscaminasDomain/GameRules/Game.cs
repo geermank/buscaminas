@@ -97,6 +97,7 @@ namespace BuscaminasDomain.GameRules
 
         protected virtual void HandleBoardCompleted()
         {
+            gameState = GameState.FINISHED;
             listener.OnGameWon();
         }
 

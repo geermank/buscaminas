@@ -1,10 +1,5 @@
-﻿using BuscaminasBE;
-using BuscaminasData;
-using System;
+﻿using BuscaminasData;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BuscaminasDomain.GameLoader
 {
@@ -12,9 +7,9 @@ namespace BuscaminasDomain.GameLoader
     {
         protected MultiPlayerGameMapper mapper = new MultiPlayerGameMapper();
 
-        public abstract List<InProgressGame> GetInProgressGames();
+        public abstract List<BuscaminasBE.InProgressGame> GetInProgressGames();
 
-        public Game LoadGame(int gameId)
+        public BuscaminasBE.Game LoadGame(int gameId)
         {
             return mapper.LoadMultiplayerGame(gameId);
         }

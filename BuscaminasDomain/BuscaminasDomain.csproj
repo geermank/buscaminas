@@ -61,10 +61,10 @@
     <Compile Include="GameLoader\SinglePlayerGameLoader.cs" />
     <Compile Include="GameRules\Factories\IGameFactory.cs" />
     <Compile Include="GameRules\Factories\MultiplayerGameFactory.cs" />
-    <Compile Include="GameRules\Factories\MultiplayerGameRestorer.cs" />
+    <Compile Include="GameRules\Factories\Restorers\MultiplayerGameRestorer.cs" />
     <Compile Include="GameRules\Factories\Restorers\GameRestorer.cs" />
     <Compile Include="GameRules\Factories\SinglePlayerGameFactory.cs" />
-    <Compile Include="GameRules\Factories\SinglePlayerGameRestorer.cs" />
+    <Compile Include="GameRules\Factories\Restorers\SinglePlayerGameRestorer.cs" />
     <Compile Include="GameRules\Game.cs" />
     <Compile Include="GameBoard\Iterator\CellNeighboursIterator.cs" />
     <Compile Include="GameBoard\Iterator\IBoardIterator.cs" />
