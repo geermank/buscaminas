@@ -136,7 +136,7 @@ namespace BuscaminasDomain.GameRules
             gameRestorer.NotifyGameRestored(board, listener);
         }
 
-        public abstract bool UserCanRestartGame();
+        public abstract bool CanBeRestarted();
         protected abstract bool IsUserFlagEnabled();
         protected abstract bool CurrentUserCanPlay();
         protected abstract GameMapper GetGameMapper();

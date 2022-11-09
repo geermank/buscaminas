@@ -18,7 +18,7 @@
             return new GameDifficulty("Experto", 30, 16, 99);
         }
 
-        public static GameDifficulty GetFromBoardSize(int width, int height)
+        public static GameDifficulty CreateFromBoardSize(int width, int height)
         {
             GameDifficulty difficulty;
             if (width == 8 && height == 8)

@@ -188,7 +188,7 @@ namespace Buscaminas.MainMenu
                 return;
             }
             SinglePlayerGameRestorer spgRestorer = new SinglePlayerGameRestorer(game);
-            GameDifficulty gameDifficulty = GameDifficultyFactory.GetFromBoardSize(game.Board.Width, game.Board.Height);
+            GameDifficulty gameDifficulty = GameDifficultyFactory.CreateFromBoardSize(game.Board.Width, game.Board.Height);
             form.LaunchGame(spgRestorer, gameDifficulty);
         }
 
@@ -226,7 +226,7 @@ namespace Buscaminas.MainMenu
         private void LaunchMultiplayerGame(BuscaminasBE.MultiplayerGame game)
         {
             GameRestorer gameRestorer = new MultiplayerGameRestorer(game);
-            GameDifficulty gameDifficulty = GameDifficultyFactory.GetFromBoardSize(game.Board.Width, game.Board.Height);
+            GameDifficulty gameDifficulty = GameDifficultyFactory.CreateFromBoardSize(game.Board.Width, game.Board.Height);
             form.LaunchGame(gameRestorer, gameDifficulty);
         }
     }

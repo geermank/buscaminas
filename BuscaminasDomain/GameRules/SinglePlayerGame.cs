@@ -26,7 +26,7 @@ namespace BuscaminasDomain.GameRules
             this.result = result;
         }
 
-        public override bool UserCanRestartGame()
+        public override bool CanBeRestarted()
         {
             return true;
         }

@@ -8,7 +8,7 @@ namespace BuscaminasDomain.GameRules.Factories
     {
         private SinglePlayerGameMapper gameMapper = new SinglePlayerGameMapper();
 
-        public virtual Game CreateGame(GameDifficulty difficulty)
+        public Game CreateGame(GameDifficulty difficulty)
         {
             Board board = BoardGenerator.GetInstance().CreateBoard(difficulty);
             

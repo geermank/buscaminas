@@ -60,7 +60,7 @@ namespace Buscaminas
 
         public void ResetGame()
         {
-            if(currentGame.UserCanRestartGame())
+            if(currentGame.CanBeRestarted())
             {
                 form.SetFaceButtonImage(FaceButtonImages.SMILE);
                 form.ChangeCellsPanelEnable(true);

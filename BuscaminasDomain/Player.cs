@@ -42,13 +42,6 @@ namespace BuscaminasDomain
             score = 0;
         }
 
-        public Player(int userId, string name, int score)
-        {
-            this.userId = userId;
-            this.name = name;
-            this.score = score;
-        }
-
         public void IncrementScore()
         {
             score++;

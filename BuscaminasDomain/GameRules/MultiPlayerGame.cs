@@ -23,11 +23,6 @@ namespace BuscaminasDomain.GameRules
             get { return players; }
         }
 
-        public override bool UserCanRestartGame()
-        {
-            return false;
-        }
-
         internal MultiPlayerGame(Board board, List<Player> players) : base(board)
         {
             this.players = players;
@@ -44,6 +39,11 @@ namespace BuscaminasDomain.GameRules
         {
             this.players = players;
             this.turn = turn;
+        }
+
+        public override bool CanBeRestarted()
+        {
+            return false;
         }
 
         public BuscaminasBE.MultiplayerGame ToBEObject()
