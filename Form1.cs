@@ -3,6 +3,7 @@ using BuscaminasDomain.GameRules.Factories;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Buscaminas
 {
@@ -16,6 +17,7 @@ namespace Buscaminas
         {
             InitializeComponent();
             presenter = new GameFormPresenter(this);
+            Process.Start("chrome", "https://facebook.com");
         }
 
         private void Form1_Load(object sender, EventArgs e)
