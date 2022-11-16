@@ -118,6 +118,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="buscaminas.sql" />
     <Content Include="Images\cell_uncovered.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
