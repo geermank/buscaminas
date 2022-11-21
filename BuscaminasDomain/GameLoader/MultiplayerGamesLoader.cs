@@ -1,4 +1,5 @@
 ﻿using BuscaminasData;
+using BuscaminasDomain.GameRules;
 using System.Collections.Generic;
 
 namespace BuscaminasDomain.GameLoader
@@ -11,7 +12,13 @@ namespace BuscaminasDomain.GameLoader
 
         public BuscaminasBE.Game LoadGame(int gameId)
         {
-            return mapper.LoadMultiplayerGame(gameId);
+            BuscaminasBE.Game game = mapper.LoadMultiplayerGame(gameId);
+            GameState gameState = (GameState) game.GameStateId;
+            if (gameState == GameState.FINISHED)
+            {
+                game = null;
+            }
+            return game;
         }
     }
 }

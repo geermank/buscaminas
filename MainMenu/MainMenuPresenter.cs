@@ -19,7 +19,7 @@ namespace Buscaminas.MainMenu
     interface IMainMenuForm
     {
         void ChangeUserLoggedButtonEnable(bool isEnable);
-        void SetCurrentUserName(string userName);
+        void SetCurrentUser(string userName);
         void LaunchGame(IGameFactory gameFactory, GameDifficulty difficulty);
         void ShowSinglePlayerInProgressGames(List<InProgressGameViewItem> items); 
         void ShowMultiPlayerRooms(List<InProgressGameViewItem> items);
@@ -74,7 +74,7 @@ namespace Buscaminas.MainMenu
             form.ChangeUserLoggedButtonEnable(auth.UserLogged);
             if (auth.UserLogged)
             {
-                form.SetCurrentUserName(auth.UserName);
+                form.SetCurrentUser(auth.UserName);
             }
         }
 
@@ -166,7 +166,7 @@ namespace Buscaminas.MainMenu
         public void OnUserLoggedInOrRegistered()
         {
             form.ChangeUserLoggedButtonEnable(true);
-            form.SetCurrentUserName(auth.UserName);
+            form.SetCurrentUser(auth.UserName);
         }
 
         public void RefreshSinglePlayerGames()
@@ -201,6 +201,11 @@ namespace Buscaminas.MainMenu
             try
             {
                 BuscaminasBE.MultiplayerGame game = (BuscaminasBE.MultiplayerGame) multiPlayerInProgressGamesLoader.LoadGame(selectedGameItem.GameId);
+                if (game == null)
+                {
+                    form.ShowMessage("Este juego ha finalizado!");
+                    return;
+                } 
                 LaunchMultiplayerGame(game);
             } catch(Exception ex)
             {

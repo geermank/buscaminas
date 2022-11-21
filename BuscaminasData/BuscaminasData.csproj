@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseMapper.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseException.cs" />
     <Compile Include="GameMapper.cs" />
+    <Compile Include="GameStatisticsMapper.cs" />
     <Compile Include="MultiPlayerGameMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SinglePlayerGameMapper.cs" />

@@ -107,10 +107,11 @@ namespace Buscaminas
             btnSpgContinue.Enabled = isEnable;
         }
 
-        public void SetCurrentUserName(string userName)
+        public void SetCurrentUser(string userName)
         {
             labelUserName.Visible = true;
             labelUserName.Text = "Usuario actual: " + userName;
+            buttonStatistics.Visible = true;
         }
 
         private void MainMenuForm_Load(object sender, EventArgs e)
@@ -209,6 +210,12 @@ namespace Buscaminas
             {
                 presenter.LoadMultiplayerGame(selectedGame);
             }
+        }
+
+        private void buttonStatistics_Click(object sender, EventArgs e)
+        {
+            GameHistoryForm form = new GameHistoryForm();
+            form.Show();
         }
     }
 }

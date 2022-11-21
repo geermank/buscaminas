@@ -63,6 +63,7 @@
             this.refrescarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripMpgRefresh = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refrescarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonStatistics = new System.Windows.Forms.Button();
             this.panelGameButton.SuspendLayout();
             this.panelDifficulty.SuspendLayout();
             this.panelMultiplayer.SuspendLayout();
@@ -331,11 +332,14 @@
             // 
             // labelUserName
             // 
+            this.labelUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.labelUserName.AutoSize = true;
-            this.labelUserName.Location = new System.Drawing.Point(12, 432);
+            this.labelUserName.Location = new System.Drawing.Point(4, 404);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(0, 13);
+            this.labelUserName.Size = new System.Drawing.Size(44, 13);
             this.labelUserName.TabIndex = 10;
+            this.labelUserName.Text = "German";
             this.labelUserName.Visible = false;
             // 
             // panelSinglePlayerLoadNew
@@ -421,12 +425,26 @@
             this.refrescarToolStripMenuItem1.Text = "Refrescar";
             this.refrescarToolStripMenuItem1.Click += new System.EventHandler(this.refrescarToolStripMenuItem1_Click);
             // 
+            // buttonStatistics
+            // 
+            this.buttonStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStatistics.Location = new System.Drawing.Point(3, 420);
+            this.buttonStatistics.Name = "buttonStatistics";
+            this.buttonStatistics.Size = new System.Drawing.Size(77, 25);
+            this.buttonStatistics.TabIndex = 12;
+            this.buttonStatistics.Text = "Estadísticas";
+            this.buttonStatistics.UseVisualStyleBackColor = true;
+            this.buttonStatistics.Visible = false;
+            this.buttonStatistics.Click += new System.EventHandler(this.buttonStatistics_Click);
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(783, 450);
+            this.Controls.Add(this.buttonStatistics);
             this.Controls.Add(this.panelSinglePlayerLoadNew);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.btnRegister);
@@ -492,5 +510,6 @@
         private System.Windows.Forms.RadioButton radioButtonMpgInProgressGames;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripMpgRefresh;
         private System.Windows.Forms.ToolStripMenuItem refrescarToolStripMenuItem1;
+        private System.Windows.Forms.Button buttonStatistics;
     }
 }

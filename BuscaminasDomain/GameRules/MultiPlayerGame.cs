@@ -147,7 +147,6 @@ namespace BuscaminasDomain.GameRules
             int? winnerId = GetWinner()?.UserId;
 
             gameMapper.SetGameResult(Id, gameResult, winnerId);
-            // TODO update game in db apart from result
         }
 
         private void ResetMinesUncoveredCounter()

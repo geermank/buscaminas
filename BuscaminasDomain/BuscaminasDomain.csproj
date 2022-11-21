@@ -73,7 +73,6 @@
     <Compile Include="GameRules\GameState.cs" />
     <Compile Include="GameRules\Result\GameResult.cs" />
     <Compile Include="GameRules\Result\MultiplayerGameResult.cs" />
-    <Compile Include="GameStatus.cs" />
     <Compile Include="Cell\MineCell.cs" />
     <Compile Include="GameRules\MultiPlayerGame.cs" />
     <Compile Include="Cell\NumberCell.cs" />
@@ -81,6 +80,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameRules\SinglePlayerGame.cs" />
     <Compile Include="IBEObjectConverter.cs" />
+    <Compile Include="Statistics\UserGamesStatistics.cs" />
+    <Compile Include="Statistics\UserGameStatisticsLoader.cs" />
     <Compile Include="Turn.cs" />
     <Compile Include="Utils\ICompetitor.cs" />
     <Compile Include="Utils\IntegerToBoolConverter.cs" />

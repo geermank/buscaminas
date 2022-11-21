@@ -44,6 +44,7 @@
     <Compile Include="Board.cs" />
     <Compile Include="BoardCell.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameStatistics.cs" />
     <Compile Include="InProgressGame.cs" />
     <Compile Include="MultiplayerGame.cs" />
     <Compile Include="MultiplayerResult.cs" />

@@ -34,3 +34,4 @@ C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\B
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.csproj.CopyComplete
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.exe
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.pdb
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.GameHistoryForm.resources

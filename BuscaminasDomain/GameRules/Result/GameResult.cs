@@ -1,6 +1,6 @@
 ﻿namespace BuscaminasDomain.GameRules.Result
 {
-    internal enum GameResult
+    public enum GameResult
     {
         NO_RESULT = -1,
         WIN = 0,

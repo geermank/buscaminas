@@ -4,14 +4,8 @@ using System.Data;
 
 namespace BuscaminasData
 {
-    public class UserMapper
+    public class UserMapper : BaseMapper
     {
-        private SqlDatabase database;
-
-        public UserMapper()
-        {
-            database = new SqlDatabase(Constants.CONNECTION_STRING);
-        }
 
         public void CreateUser(BuscaminasBE.User user)
         {
