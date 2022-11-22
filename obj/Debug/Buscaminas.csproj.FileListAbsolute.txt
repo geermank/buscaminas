@@ -35,3 +35,5 @@ C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\B
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.exe
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.pdb
 C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\obj\Debug\Buscaminas.GameHistoryForm.resources
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\Fonts\MINE-SWEEPER.ttf
+C:\Users\germa\OneDrive\Documentos\German\UAI\Lenguajes de última generación\Buscaminas\bin\Debug\Fonts\DS-Digital.ttf

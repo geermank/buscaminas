@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 using Buscaminas.MainMenu;
 using BuscaminasDomain;
 using BuscaminasDomain.GameRules.Factories;
+using System.Diagnostics;
 
 namespace Buscaminas
 {
