@@ -80,11 +80,11 @@ namespace BuscaminasDomain.GameRules
 
         internal override void HandleMineSelected(MineCell mine)
         {
-            board.FlagCell(mine.Position, true);
             IncrementPlayerScore();
 
-            minesUncoveredThisTurn++;
+            board.FlagCell(mine.Position, true);
 
+            minesUncoveredThisTurn++;
             if (minesUncoveredThisTurn >= MAX_UNCOVER_MINES_PER_TURN)
             {
                 ChangeTurn();
@@ -147,6 +147,8 @@ namespace BuscaminasDomain.GameRules
             int? winnerId = GetWinner()?.UserId;
 
             gameMapper.SetGameResult(Id, gameResult, winnerId);
+
+            Analytics.GetInstance().Log(Event.MULTIPLAYER_GAME_END);
         }
 
         private void ResetMinesUncoveredCounter()

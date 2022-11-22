@@ -40,6 +40,11 @@ namespace BuscaminasData
                         gs.MultiPlayerGameResult = -1;
                     }
 
+                    string winner = row["winner"].ToString();
+                    if (!string.IsNullOrEmpty(winner))
+                    {
+                        gs.Winner = int.Parse(winner);
+                    }
                     
                     gs.BoardHeight = int.Parse(row["boardHeight"].ToString());
                     gs.BoardWidth = int.Parse(row["boardWidth"].ToString());

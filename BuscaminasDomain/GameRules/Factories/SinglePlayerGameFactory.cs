@@ -18,6 +18,8 @@ namespace BuscaminasDomain.GameRules.Factories
             // cuando el juego se guarda, la base crea ids para el juego y las celdas
             singlePlayerGame.UpdateIds(updatedGame);
 
+            Analytics.GetInstance().Log(Event.SINGLE_PLAYER_GAME_START);
+
             return singlePlayerGame;
         }
 

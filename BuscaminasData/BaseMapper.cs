@@ -15,6 +15,7 @@ namespace BuscaminasData
             }
 
             bool finishedWithError = false;
+            string errorMessage = null;
             try
             {
                 action();
@@ -23,9 +24,10 @@ namespace BuscaminasData
                     database.CommitTransaction();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 finishedWithError = true;
+                errorMessage = ex.Message;
                 if (transaction)
                 {
                     database.RollbackTransaction();
@@ -38,7 +40,11 @@ namespace BuscaminasData
 
             if (finishedWithError)
             {
-                throw new DatabaseException("Ha ocurrido un error");
+                if (errorMessage == null)
+                {
+                    errorMessage = "Ha ocurrido un error";
+                }
+                throw new DatabaseException(errorMessage);
             }
         }
     }

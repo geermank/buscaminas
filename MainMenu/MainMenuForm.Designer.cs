@@ -64,6 +64,7 @@
             this.contextMenuStripMpgRefresh = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refrescarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonStatistics = new System.Windows.Forms.Button();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.panelGameButton.SuspendLayout();
             this.panelDifficulty.SuspendLayout();
             this.panelMultiplayer.SuspendLayout();
@@ -128,7 +129,7 @@
             this.panelDifficulty.Controls.Add(this.radioButtonIntermediate);
             this.panelDifficulty.Controls.Add(this.label2);
             this.panelDifficulty.Controls.Add(this.radioButtonEasy);
-            this.panelDifficulty.Location = new System.Drawing.Point(307, 140);
+            this.panelDifficulty.Location = new System.Drawing.Point(307, 144);
             this.panelDifficulty.Name = "panelDifficulty";
             this.panelDifficulty.Size = new System.Drawing.Size(198, 298);
             this.panelDifficulty.TabIndex = 6;
@@ -224,13 +225,14 @@
             // 
             // panelMultiplayer
             // 
+            this.panelMultiplayer.ContextMenuStrip = this.contextMenuStripMpgRefresh;
             this.panelMultiplayer.Controls.Add(this.radioButtonOpenRooms);
             this.panelMultiplayer.Controls.Add(this.radioButtonMpgInProgressGames);
             this.panelMultiplayer.Controls.Add(this.button4);
             this.panelMultiplayer.Controls.Add(this.label5);
             this.panelMultiplayer.Controls.Add(this.listBoxMpgRooms);
             this.panelMultiplayer.Controls.Add(this.button3);
-            this.panelMultiplayer.Location = new System.Drawing.Point(259, 146);
+            this.panelMultiplayer.Location = new System.Drawing.Point(258, 147);
             this.panelMultiplayer.Name = "panelMultiplayer";
             this.panelMultiplayer.Size = new System.Drawing.Size(279, 298);
             this.panelMultiplayer.TabIndex = 7;
@@ -335,7 +337,7 @@
             this.labelUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.labelUserName.AutoSize = true;
-            this.labelUserName.Location = new System.Drawing.Point(4, 404);
+            this.labelUserName.Location = new System.Drawing.Point(3, 377);
             this.labelUserName.Name = "labelUserName";
             this.labelUserName.Size = new System.Drawing.Size(44, 13);
             this.labelUserName.TabIndex = 10;
@@ -344,11 +346,12 @@
             // 
             // panelSinglePlayerLoadNew
             // 
+            this.panelSinglePlayerLoadNew.ContextMenuStrip = this.contextMenuStripRefrescarSPG;
             this.panelSinglePlayerLoadNew.Controls.Add(this.btnReturnSpgMenu);
             this.panelSinglePlayerLoadNew.Controls.Add(this.btnSpgNewGame);
             this.panelSinglePlayerLoadNew.Controls.Add(this.btnSpgContinue);
             this.panelSinglePlayerLoadNew.Controls.Add(this.listBoxInProgressSpg);
-            this.panelSinglePlayerLoadNew.Location = new System.Drawing.Point(275, 143);
+            this.panelSinglePlayerLoadNew.Location = new System.Drawing.Point(272, 168);
             this.panelSinglePlayerLoadNew.Name = "panelSinglePlayerLoadNew";
             this.panelSinglePlayerLoadNew.Size = new System.Drawing.Size(250, 288);
             this.panelSinglePlayerLoadNew.TabIndex = 11;
@@ -429,7 +432,7 @@
             // 
             this.buttonStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStatistics.Location = new System.Drawing.Point(3, 420);
+            this.buttonStatistics.Location = new System.Drawing.Point(3, 392);
             this.buttonStatistics.Name = "buttonStatistics";
             this.buttonStatistics.Size = new System.Drawing.Size(77, 25);
             this.buttonStatistics.TabIndex = 12;
@@ -438,12 +441,28 @@
             this.buttonStatistics.Visible = false;
             this.buttonStatistics.Click += new System.EventHandler(this.buttonStatistics_Click);
             // 
+            // buttonLogout
+            // 
+            this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonLogout.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonLogout.ForeColor = System.Drawing.Color.Red;
+            this.buttonLogout.Location = new System.Drawing.Point(3, 420);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(77, 25);
+            this.buttonLogout.TabIndex = 13;
+            this.buttonLogout.Text = "Cerrar sesión";
+            this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Visible = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(783, 450);
+            this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonStatistics);
             this.Controls.Add(this.panelSinglePlayerLoadNew);
             this.Controls.Add(this.labelUserName);
@@ -511,5 +530,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripMpgRefresh;
         private System.Windows.Forms.ToolStripMenuItem refrescarToolStripMenuItem1;
         private System.Windows.Forms.Button buttonStatistics;
+        private System.Windows.Forms.Button buttonLogout;
     }
 }

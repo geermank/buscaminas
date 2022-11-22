@@ -1,7 +1,6 @@
 ﻿using BuscaminasAuth;
 using BuscaminasDomain;
 using BuscaminasDomain.GameLoader;
-using BuscaminasDomain.GameRules;
 using BuscaminasDomain.GameRules.Factories;
 using BuscaminasDomain.GameRules.Factories.Restorers;
 using System;
@@ -19,7 +18,8 @@ namespace Buscaminas.MainMenu
     interface IMainMenuForm
     {
         void ChangeUserLoggedButtonEnable(bool isEnable);
-        void SetCurrentUser(string userName);
+        void ChangeUserMenuVisibility(bool isVisible);
+        void SetCurrentUserName(string userName);
         void LaunchGame(IGameFactory gameFactory, GameDifficulty difficulty);
         void ShowSinglePlayerInProgressGames(List<InProgressGameViewItem> items); 
         void ShowMultiPlayerRooms(List<InProgressGameViewItem> items);
@@ -72,9 +72,10 @@ namespace Buscaminas.MainMenu
         public void OnStartForm()
         {
             form.ChangeUserLoggedButtonEnable(auth.UserLogged);
+            form.ChangeUserMenuVisibility(auth.UserLogged);
             if (auth.UserLogged)
             {
-                form.SetCurrentUser(auth.UserName);
+                form.SetCurrentUserName(auth.UserName);
             }
         }
 
@@ -138,12 +139,23 @@ namespace Buscaminas.MainMenu
             form.LaunchGame(new SinglePlayerGameFactory(), gameDifficulty);
         }
 
-        public void StartNewMultiplayerGame()
+        public void StartNewMultiplayerGame(GameCheckBoxDifficulty difficulty)
         {
-            form.LaunchGame(
-                new MultiplayerGameFactory(),
-                GameDifficultyFactory.CreateEasyGame()
-            );
+
+            GameDifficulty gameDifficulty;
+            if (difficulty == GameCheckBoxDifficulty.EASY)
+            {
+                gameDifficulty = GameDifficultyFactory.CreateEasyGame();
+            }
+            else if (difficulty == GameCheckBoxDifficulty.INTERMEDIATE)
+            {
+                gameDifficulty = GameDifficultyFactory.CreateIntermediateGame();
+            }
+            else
+            {
+                gameDifficulty = GameDifficultyFactory.CreateHardGame();
+            }
+            form.LaunchGame(new MultiplayerGameFactory(), gameDifficulty);
         }
 
         public void JoinMultiplayerGame(InProgressGameViewItem game)
@@ -166,7 +178,8 @@ namespace Buscaminas.MainMenu
         public void OnUserLoggedInOrRegistered()
         {
             form.ChangeUserLoggedButtonEnable(true);
-            form.SetCurrentUser(auth.UserName);
+            form.ChangeUserMenuVisibility(true);
+            form.SetCurrentUserName(auth.UserName);
         }
 
         public void RefreshSinglePlayerGames()
@@ -211,6 +224,13 @@ namespace Buscaminas.MainMenu
             {
                 form.ShowMessage(ex.Message);
             }
+        }
+
+        public void Logout()
+        {
+            Authentication.GetInstance().Logout();
+            form.ChangeUserLoggedButtonEnable(false);
+            form.ChangeUserMenuVisibility(false);
         }
 
         private void LoadCurrentSinglePlayerGames()

@@ -23,6 +23,7 @@ namespace BuscaminasData
 
             queryParams.Add("@name", user.Name);
             queryParams.Add("@password", user.Password);
+            queryParams.Add("@lastLoging", user.LastLogin);
 
             int userId = database.ExecuteNonQueryWithReturnValue("CREATE_USER", queryParams);
             user.Id = userId;
@@ -50,12 +51,24 @@ namespace BuscaminasData
                 user.Name = row["name"].ToString();
                 user.Email = row["email"].ToString();
                 user.Password = row["password"].ToString();
+                user.LastLogin = DateTime.Now.Ticks;
             }
 
             if (user.Id == -1)
             {
                 // no se encontró el usuario
                 throw new DatabaseException("El usuario no se encuentra registrado");
+            } else
+            {
+                database.OpenConnection();
+
+                IDictionary<string, object> lastLoginParams = new Dictionary<string, object>();
+                lastLoginParams.Add("@userId", user.Id);
+                lastLoginParams.Add("@lastLogin", user.LastLogin);
+
+                database.ExecuteNonQuery("UPDATE_LAST_LOGIN", lastLoginParams);
+                
+                database.CloseConnection();
             }
 
             return user;

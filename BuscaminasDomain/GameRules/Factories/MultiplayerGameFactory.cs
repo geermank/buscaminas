@@ -20,6 +20,8 @@ namespace BuscaminasDomain.GameRules.Factories
             var gameData = mapper.CreateGame(Authentication.GetInstance().UserId, newGame.ToBEObject());
             newGame.UpdateIds(gameData);
 
+            Analytics.GetInstance().Log(Event.MULTIPLAYER_GAME_START);
+
             return newGame;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using BuscaminasData;
 using BuscaminasDomain.GameBoard;
+using BuscaminasDomain.GameBoard.Iterator;
 
 namespace BuscaminasDomain.GameRules
 {
@@ -97,6 +98,7 @@ namespace BuscaminasDomain.GameRules
 
         protected virtual void HandleBoardCompleted()
         {
+            ShowUncoveredCells();
             gameState = GameState.FINISHED;
             listener.OnGameWon();
         }
@@ -134,6 +136,27 @@ namespace BuscaminasDomain.GameRules
                 return;
             }
             gameRestorer.NotifyGameRestored(board, listener);
+        }
+
+        private void ShowUncoveredCells()
+        {
+            IBoardIterator iterator = board.GetIterator();
+            while (iterator.HasNext())
+            {
+                BoardCell next = iterator.Next();
+                if (next.Selected || next.Flagged)
+                {
+                    continue;
+                }
+                if (next is NumberCell)
+                {
+                    listener?.ShowNumber(next.Position.X, next.Position.Y, (next as NumberCell).Number, 0);
+                }
+                else if (next is EmptyCell)
+                {
+                    listener?.ShowEmptyCell(next.Position.X, next.Position.Y, 0);
+                }
+            }
         }
 
         public abstract bool CanBeRestarted();

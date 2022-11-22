@@ -1,7 +1,7 @@
 ﻿using BuscaminasDomain.Statistics;
 using BuscaminasDomain.GameRules.Result;
 using System.Collections.Generic;
-using System;
+using BuscaminasAuth;
 
 namespace Buscaminas.GameHistory
 {
@@ -74,13 +74,13 @@ namespace Buscaminas.GameHistory
             {
                 gameType = "Multiplayer";
                 GameResult result = (GameResult) gameStatistics.MultiPlayerGameResult;
-                gameResult = GetUiResult(result);
+                gameResult = GetUiResult(result, true, gameStatistics.Winner);
 
             } else if (gameStatistics.MultiPlayerGameResult == -1)
             {
                 gameType = "Single player";
                 GameResult result = (GameResult)gameStatistics.SinglePlayerGameResult;
-                gameResult = GetUiResult(result);
+                gameResult = GetUiResult(result, false, null);
             }
 
             gameHistoryItem.Title = gameType + " - " + gameResult + " - " + gameStatistics.BoardWidth + "x" + gameStatistics.BoardHeight;
@@ -88,7 +88,7 @@ namespace Buscaminas.GameHistory
             return gameHistoryItem;
         }
 
-        private string GetUiResult(GameResult result)
+        private string GetUiResult(GameResult result, bool isMultiplayer, int? multiplayerWinner)
         {
             string gameResult = "";
             if (result == GameResult.TIE)
@@ -102,6 +102,14 @@ namespace Buscaminas.GameHistory
             else if (result == GameResult.WIN)
             {
                 gameResult = "Ganado";
+                if (isMultiplayer)
+                {
+                    var currentUserId = Authentication.GetInstance().UserId;
+                    if (multiplayerWinner != null && multiplayerWinner != currentUserId)
+                    {
+                        gameResult = "Perdido";
+                    }
+                }
             }
             return gameResult;
         }

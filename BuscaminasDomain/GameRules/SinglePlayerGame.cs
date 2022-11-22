@@ -65,26 +65,11 @@ namespace BuscaminasDomain.GameRules
         {
             base.HandleBoardCompleted();
 
-            IBoardIterator iterator = board.GetIterator();
-            while (iterator.HasNext())
-            {
-                BoardCell next = iterator.Next();
-                if (next.Selected || next.Flagged)
-                {
-                    continue;
-                }
-                if (next is NumberCell)
-                {
-                    listener?.ShowNumber(next.Position.X, next.Position.Y, (next as NumberCell).Number, 0);
-                } else if (next is EmptyCell)
-                {
-                    listener?.ShowEmptyCell(next.Position.X, next.Position.Y, 0);
-                }
-            }
-
             result = GameResult.WIN;
 
             gameMapper.SaveGame(ToBEObject(), null);
+
+            Analytics.GetInstance().Log(Event.SINGLE_PLAYER_GAME_END);
         }
 
         protected override bool CurrentUserCanPlay()

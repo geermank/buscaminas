@@ -43,10 +43,14 @@
   <ItemGroup>
     <Compile Include="Authentication.cs" />
     <Compile Include="AuthException.cs" />
-    <Compile Include="Password.cs" />
-    <Compile Include="UserName.cs" />
+    <Compile Include="AuthMethod\EmailPasswordAuthMethod.cs" />
+    <Compile Include="AuthMethod\Password.cs" />
+    <Compile Include="AuthMethod\UserName.cs" />
+    <Compile Include="Cache\CachedCredentials.cs" />
+    <Compile Include="Cache\CachedUserParser.cs" />
+    <Compile Include="Cache\CachedUserStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserEmail.cs" />
+    <Compile Include="AuthMethod\Email.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BuscaminasBE\BuscaminasBE.csproj">

@@ -2,7 +2,7 @@
 
 namespace BuscaminasAuth
 {
-    internal class UserEmail
+    internal class Email
     {
         private const string EMAIL_REGEX = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 
@@ -13,7 +13,7 @@ namespace BuscaminasAuth
             get { return value; }
         }
 
-        public UserEmail(string value)
+        public Email(string value)
         {
             this.value = value;
         }

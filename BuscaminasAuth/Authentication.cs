@@ -1,4 +1,5 @@
-﻿using BuscaminasData;
+﻿using BuscaminasAuth.AuthMethod;
+using BuscaminasData;
 
 namespace BuscaminasAuth
 {
@@ -15,9 +16,9 @@ namespace BuscaminasAuth
             return _instance;
         }
 
-        private BuscaminasBE.User currentUser = null;
+        private EmailPasswordAuthMethod authMethod;
 
-        private UserMapper userMapper;
+        private BuscaminasBE.User currentUser = null;
 
         public bool UserLogged
         {
@@ -48,50 +49,27 @@ namespace BuscaminasAuth
 
         private Authentication()
         {
-            userMapper = new UserMapper();
+            this.authMethod = new EmailPasswordAuthMethod();
+            this.currentUser = authMethod.GetLoggedUser();
         }
 
         public void CreateUser(string name, string email, string password)
         {
-            var userName = new UserName(name);
-            userName.Validate();
-
-            var userEmail = new UserEmail(email);
-            userEmail.Validate();
-
-            var userPass = new Password(password);
-            userPass.Validate();
-
-            BuscaminasBE.User user = new BuscaminasBE.User();
-            user.Email = userEmail.Value;
-            user.Name = userName.Value;
-            user.Password = userPass.Value;
-
-            try
-            {
-                userMapper.CreateUser(user);
-                currentUser = user;
-            } catch(DatabaseException ex)
-            {
-                throw new AuthException(ex.Message);
-            }
+            currentUser = authMethod.CreateUser(name, email, password);
+            Analytics.GetInstance().Log(Event.USER_CREATED);
         }
 
         public void Login(string email, string password)
         {
-            var userEmail = new UserEmail(email);
-            userEmail.Validate();
+            currentUser = authMethod.Login(email, password);
+            Analytics.GetInstance().Log(Event.LOGIN);
+        }
 
-            var userPass = new Password(password);
-            userPass.Validate();
-
-            try
-            {
-                currentUser = userMapper.Login(email, password);
-            } catch(DatabaseException ex)
-            {
-                throw new AuthException(ex.Message);
-            }
+        public void Logout()
+        {
+            authMethod.Logout();
+            currentUser = null;
+            Analytics.GetInstance().Log(Event.LOGOUT);
         }
     }
 }

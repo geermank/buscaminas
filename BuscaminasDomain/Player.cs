@@ -58,11 +58,11 @@ namespace BuscaminasDomain
         public Player Oust(Player rival)
         {
             Player champion = null;
-            if (rival.Score > Score)
+            if (rival.Score > score)
             {
                 champion = rival;
             }
-            else if (rival.Score < Score)
+            else if (rival.Score < score)
             {
                 champion = this;
             }

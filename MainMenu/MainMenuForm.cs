@@ -11,6 +11,8 @@ namespace Buscaminas
     {
         private MainMenuPresenter presenter;
 
+        private bool creatingSingleGame = false;
+
         public MainMenuForm()
         {
             InitializeComponent();
@@ -47,9 +49,9 @@ namespace Buscaminas
         private void buttonDiffReturn_Click(object sender, EventArgs e)
         {
             panelGameButton.Visible = false;
-            panelSinglePlayerLoadNew.Visible = true;
+            panelSinglePlayerLoadNew.Visible = creatingSingleGame;
             panelDifficulty.Visible = false;
-            panelMultiplayer.Visible = false;
+            panelMultiplayer.Visible = !creatingSingleGame;
         }
 
         private void buttonStartGame_Click(object sender, EventArgs e)
@@ -67,7 +69,14 @@ namespace Buscaminas
             {
                 selectedCheckbox = GameCheckBoxDifficulty.HARD;
             }
-            presenter.StartNewSinglePlayerGame(selectedCheckbox);
+
+            if (creatingSingleGame)
+            {
+                presenter.StartNewSinglePlayerGame(selectedCheckbox);
+            } else
+            {
+                presenter.StartNewMultiplayerGame(selectedCheckbox);
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -107,11 +116,9 @@ namespace Buscaminas
             btnSpgContinue.Enabled = isEnable;
         }
 
-        public void SetCurrentUser(string userName)
+        public void SetCurrentUserName(string userName)
         {
-            labelUserName.Visible = true;
             labelUserName.Text = "Usuario actual: " + userName;
-            buttonStatistics.Visible = true;
         }
 
         private void MainMenuForm_Load(object sender, EventArgs e)
@@ -129,11 +136,18 @@ namespace Buscaminas
 
         private void button3_Click(object sender, EventArgs e)
         {
-            presenter.StartNewMultiplayerGame();
+            creatingSingleGame = false;
+
+            panelGameButton.Visible = false;
+            panelSinglePlayerLoadNew.Visible = false;
+            panelDifficulty.Visible = true;
+            panelMultiplayer.Visible = false;
         }
 
         private void btnSpgNewGame_Click(object sender, EventArgs e)
         {
+            creatingSingleGame = true;
+
             panelGameButton.Visible = false;
             panelSinglePlayerLoadNew.Visible = false;
             panelDifficulty.Visible = true;
@@ -175,7 +189,14 @@ namespace Buscaminas
 
         private void refrescarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            // TODO
+            if (radioButtonOpenRooms.Checked)
+            {
+                presenter.ShowMultiplayerOpenRooms();
+            }
+            else if (radioButtonMpgInProgressGames.Checked)
+            {
+                presenter.ShowMultiplayerGamesInProgess();
+            }
         }
 
         private void radioButtonOpenRooms_CheckedChanged(object sender, EventArgs e)
@@ -216,6 +237,18 @@ namespace Buscaminas
         {
             GameHistoryForm form = new GameHistoryForm();
             form.Show();
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            presenter.Logout();
+        }
+
+        public void ChangeUserMenuVisibility(bool isVisible)
+        {
+            buttonStatistics.Visible = isVisible;
+            buttonLogout.Visible = isVisible;
+            labelUserName.Visible = isVisible;
         }
     }
 }

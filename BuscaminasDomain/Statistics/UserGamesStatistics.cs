@@ -1,4 +1,5 @@
-﻿using BuscaminasDomain.GameRules.Result;
+﻿using BuscaminasAuth;
+using BuscaminasDomain.GameRules.Result;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,7 +24,11 @@ namespace BuscaminasDomain.Statistics
         {
             get
             {
-                return CountGamesByResult(GameResult.WIN);
+                var currentUserId = Authentication.GetInstance().UserId;
+                return (from BuscaminasBE.GameStatistics gs in gameStatistics
+                        where (((GameResult)gs.SinglePlayerGameResult) == GameResult.WIN) ||
+                        ((((GameResult)gs.MultiPlayerGameResult) == GameResult.WIN) && gs.Winner == currentUserId)
+                        select gs).Count();
             }
         }
 
@@ -31,7 +36,11 @@ namespace BuscaminasDomain.Statistics
         {
             get
             {
-                return CountGamesByResult(GameResult.LOST);
+                var currentUserId = Authentication.GetInstance().UserId;
+                return (from BuscaminasBE.GameStatistics gs in gameStatistics
+                        where (((GameResult)gs.SinglePlayerGameResult) == GameResult.WIN) ||
+                        ((((GameResult)gs.MultiPlayerGameResult) == GameResult.WIN) && gs.Winner != currentUserId)
+                        select gs).Count();
             }
         }
 
@@ -39,7 +48,10 @@ namespace BuscaminasDomain.Statistics
         {
             get
             {
-                return CountGamesByResult(GameResult.TIE);
+                return (from BuscaminasBE.GameStatistics gs in gameStatistics
+                        where (((GameResult)gs.SinglePlayerGameResult) == GameResult.TIE) ||
+                        (((GameResult)gs.MultiPlayerGameResult) == GameResult.TIE)
+                        select gs).Count();
             }
         }
 
@@ -63,14 +75,6 @@ namespace BuscaminasDomain.Statistics
                 }
                 return winRate;
             }
-        }
-
-        private int CountGamesByResult(GameResult expectedResult)
-        {
-            return (from BuscaminasBE.GameStatistics gs in gameStatistics
-                    where (((GameResult)gs.SinglePlayerGameResult) == expectedResult) ||
-                    (((GameResult)gs.MultiPlayerGameResult) == expectedResult)
-                    select gs).Count();
         }
     }
 }

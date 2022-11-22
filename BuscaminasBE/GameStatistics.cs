@@ -56,5 +56,13 @@
             get { return timePlayed; }
             set { timePlayed = value; }
         }
+
+        private int? winner;
+
+        public int? Winner
+        {
+            get { return winner; }
+            set { winner = value; }
+        }
     }
 }
