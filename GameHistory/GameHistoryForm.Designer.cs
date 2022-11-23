@@ -49,60 +49,60 @@
             // labelWinGamesCount
             // 
             this.labelWinGamesCount.AutoSize = true;
-            this.labelWinGamesCount.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWinGamesCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWinGamesCount.Location = new System.Drawing.Point(532, 20);
             this.labelWinGamesCount.Name = "labelWinGamesCount";
-            this.labelWinGamesCount.Size = new System.Drawing.Size(192, 15);
+            this.labelWinGamesCount.Size = new System.Drawing.Size(92, 13);
             this.labelWinGamesCount.TabIndex = 1;
             this.labelWinGamesCount.Text = "Partidas ganadas:";
             // 
             // labelTieGamesCount
             // 
             this.labelTieGamesCount.AutoSize = true;
-            this.labelTieGamesCount.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTieGamesCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTieGamesCount.Location = new System.Drawing.Point(532, 47);
             this.labelTieGamesCount.Name = "labelTieGamesCount";
-            this.labelTieGamesCount.Size = new System.Drawing.Size(215, 15);
+            this.labelTieGamesCount.Size = new System.Drawing.Size(103, 13);
             this.labelTieGamesCount.TabIndex = 2;
             this.labelTieGamesCount.Text = "Partidas empatadas:";
             // 
             // labelLostGamesCount
             // 
             this.labelLostGamesCount.AutoSize = true;
-            this.labelLostGamesCount.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLostGamesCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLostGamesCount.Location = new System.Drawing.Point(532, 75);
             this.labelLostGamesCount.Name = "labelLostGamesCount";
-            this.labelLostGamesCount.Size = new System.Drawing.Size(201, 15);
+            this.labelLostGamesCount.Size = new System.Drawing.Size(91, 13);
             this.labelLostGamesCount.TabIndex = 3;
             this.labelLostGamesCount.Text = "Partidas perdidas:";
             // 
             // labelWinRate
             // 
             this.labelWinRate.AutoSize = true;
-            this.labelWinRate.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWinRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWinRate.Location = new System.Drawing.Point(12, 39);
             this.labelWinRate.Name = "labelWinRate";
-            this.labelWinRate.Size = new System.Drawing.Size(237, 15);
+            this.labelWinRate.Size = new System.Drawing.Size(108, 13);
             this.labelWinRate.TabIndex = 4;
             this.labelWinRate.Text = "Promedio de victorias";
             // 
             // labelWinRateValue
             // 
             this.labelWinRateValue.AutoSize = true;
-            this.labelWinRateValue.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWinRateValue.Location = new System.Drawing.Point(81, 59);
+            this.labelWinRateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWinRateValue.Location = new System.Drawing.Point(44, 59);
             this.labelWinRateValue.Name = "labelWinRateValue";
-            this.labelWinRateValue.Size = new System.Drawing.Size(75, 15);
+            this.labelWinRateValue.Size = new System.Drawing.Size(42, 13);
             this.labelWinRateValue.TabIndex = 5;
             this.labelWinRateValue.Text = "40.50%";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(313, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 15);
+            this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Tiempo jugado";
             // 
@@ -111,10 +111,10 @@
             this.labelTimePlayedValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTimePlayedValue.AutoSize = true;
-            this.labelTimePlayedValue.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTimePlayedValue.Location = new System.Drawing.Point(319, 59);
+            this.labelTimePlayedValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTimePlayedValue.Location = new System.Drawing.Point(313, 59);
             this.labelTimePlayedValue.Name = "labelTimePlayedValue";
-            this.labelTimePlayedValue.Size = new System.Drawing.Size(142, 15);
+            this.labelTimePlayedValue.Size = new System.Drawing.Size(74, 13);
             this.labelTimePlayedValue.TabIndex = 7;
             this.labelTimePlayedValue.Text = "100 segundos";
             this.labelTimePlayedValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

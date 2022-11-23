@@ -80,7 +80,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(303, 104);
+            this.label1.Location = new System.Drawing.Point(305, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(192, 37);
             this.label1.TabIndex = 0;
@@ -89,7 +89,7 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("DS-Digital", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(303, 42);
@@ -101,7 +101,7 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("DS-Digital", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(3, 51);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(303, 42);
@@ -137,7 +137,7 @@
             // 
             // buttonDiffReturn
             // 
-            this.buttonDiffReturn.Font = new System.Drawing.Font("DS-Digital", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiffReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDiffReturn.Location = new System.Drawing.Point(-1, 264);
             this.buttonDiffReturn.Name = "buttonDiffReturn";
             this.buttonDiffReturn.Size = new System.Drawing.Size(199, 34);
@@ -148,7 +148,7 @@
             // 
             // buttonStartNewSpg
             // 
-            this.buttonStartNewSpg.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStartNewSpg.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStartNewSpg.Location = new System.Drawing.Point(0, 222);
             this.buttonStartNewSpg.Name = "buttonStartNewSpg";
             this.buttonStartNewSpg.Size = new System.Drawing.Size(198, 41);
@@ -278,7 +278,7 @@
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(5, 178);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(271, 41);
@@ -289,7 +289,7 @@
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("DS-Digital", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(5, 264);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(271, 34);
@@ -308,7 +308,7 @@
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(5, 223);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(271, 41);
@@ -387,7 +387,7 @@
             // 
             // btnReturnSpgMenu
             // 
-            this.btnReturnSpgMenu.Font = new System.Drawing.Font("DS-Digital", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturnSpgMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturnSpgMenu.Location = new System.Drawing.Point(12, 242);
             this.btnReturnSpgMenu.Name = "btnReturnSpgMenu";
             this.btnReturnSpgMenu.Size = new System.Drawing.Size(228, 34);
@@ -398,7 +398,7 @@
             // 
             // btnSpgNewGame
             // 
-            this.btnSpgNewGame.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpgNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSpgNewGame.Location = new System.Drawing.Point(12, 198);
             this.btnSpgNewGame.Name = "btnSpgNewGame";
             this.btnSpgNewGame.Size = new System.Drawing.Size(228, 41);
@@ -410,7 +410,7 @@
             // btnSpgContinue
             // 
             this.btnSpgContinue.Enabled = false;
-            this.btnSpgContinue.Font = new System.Drawing.Font("DS-Digital", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpgContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSpgContinue.Location = new System.Drawing.Point(12, 151);
             this.btnSpgContinue.Name = "btnSpgContinue";
             this.btnSpgContinue.Size = new System.Drawing.Size(228, 41);

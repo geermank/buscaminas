@@ -199,7 +199,7 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="buttonConfirm.Font" type="System.Drawing.Font, System.Drawing">
-    <value>DS-Digital, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="buttonConfirm.Location" type="System.Drawing.Point, System.Drawing">
     <value>51, 260</value>
@@ -226,13 +226,13 @@
     <value>True</value>
   </data>
   <data name="labelName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>DS-Digital, 8.25pt</value>
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="labelName.Location" type="System.Drawing.Point, System.Drawing">
     <value>49, 88</value>
   </data>
   <data name="labelName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 11</value>
+    <value>44, 13</value>
   </data>
   <data name="labelName.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -259,13 +259,13 @@
     <value>True</value>
   </data>
   <data name="labelEmail.Font" type="System.Drawing.Font, System.Drawing">
-    <value>DS-Digital, 8.25pt</value>
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="labelEmail.Location" type="System.Drawing.Point, System.Drawing">
     <value>49, 138</value>
   </data>
   <data name="labelEmail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 11</value>
+    <value>93, 13</value>
   </data>
   <data name="labelEmail.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -292,13 +292,13 @@
     <value>True</value>
   </data>
   <data name="labelPassword.Font" type="System.Drawing.Font, System.Drawing">
-    <value>DS-Digital, 8.25pt</value>
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="labelPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>49, 187</value>
   </data>
   <data name="labelPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 11</value>
+    <value>61, 13</value>
   </data>
   <data name="labelPassword.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -325,13 +325,13 @@
     <value>True</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>MINE-SWEEPER, 16pt</value>
+    <value>Microsoft Sans Serif, 16pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 35</value>
+    <value>103, 34</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 30</value>
+    <value>132, 26</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
