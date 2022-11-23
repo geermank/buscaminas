@@ -71,9 +71,9 @@
             this.label2.BackColor = System.Drawing.Color.Black;
             this.label2.Font = new System.Drawing.Font("DS-Digital", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(353, 11);
+            this.label2.Location = new System.Drawing.Point(328, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 44);
+            this.label2.Size = new System.Drawing.Size(106, 44);
             this.label2.TabIndex = 2;
             this.label2.Text = "000";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -85,7 +85,7 @@
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(1, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 44);
+            this.label1.Size = new System.Drawing.Size(106, 44);
             this.label1.TabIndex = 1;
             this.label1.Text = "009";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -112,20 +112,19 @@
             this.labelTurnOwner.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTurnOwner.Location = new System.Drawing.Point(2, 63);
             this.labelTurnOwner.Name = "labelTurnOwner";
-            this.labelTurnOwner.Size = new System.Drawing.Size(237, 15);
+            this.labelTurnOwner.Size = new System.Drawing.Size(117, 14);
             this.labelTurnOwner.TabIndex = 2;
             this.labelTurnOwner.Text = "Turno: German Krajcar";
             this.labelTurnOwner.Visible = false;
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(1, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 15);
+            this.label3.Size = new System.Drawing.Size(55, 14);
             this.label3.TabIndex = 3;
             this.label3.Text = "Jugador 1";
             this.label3.Visible = false;
@@ -142,13 +141,12 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MINE-SWEEPER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(1, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 15);
+            this.label4.Size = new System.Drawing.Size(55, 14);
             this.label4.TabIndex = 5;
             this.label4.Text = "Jugador 2";
             this.label4.Visible = false;

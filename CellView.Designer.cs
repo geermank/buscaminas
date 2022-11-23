@@ -52,9 +52,9 @@
             this.labelNumber.AutoSize = true;
             this.labelNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
             this.labelNumber.Font = new System.Drawing.Font("MINE-SWEEPER", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumber.Location = new System.Drawing.Point(6, 6);
+            this.labelNumber.Location = new System.Drawing.Point(12, 8);
             this.labelNumber.Name = "labelNumber";
-            this.labelNumber.Size = new System.Drawing.Size(0, 27);
+            this.labelNumber.Size = new System.Drawing.Size(0, 22);
             this.labelNumber.TabIndex = 1;
             this.labelNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 

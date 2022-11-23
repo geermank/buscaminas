@@ -114,14 +114,7 @@ namespace BuscaminasDomain.GameRules
             // solo notifica al listener el estado actual del juego
             // apenas éste empieza a escuchar
             listener.OnPlayerTurnChanged(turn.CurrentPlayer, false);
-
-            Player p1 = players[0];
-            Player p2 = null;
-            if (players.Count == 2)
-            {
-                p2 = players[1];
-            }
-            listener.ShowPlayers(p1, p2);
+            ExecuteUpdatePlayersCallback();
         }
 
         protected override GameMapper GetGameMapper()
@@ -171,7 +164,8 @@ namespace BuscaminasDomain.GameRules
         {
             turn.CurrentPlayer?.IncrementScore();
             gameMapper.UpdatePlayerScore(id, turn.CurrentPlayer?.UserId, turn.CurrentPlayer?.Score);
-            listener?.ShowPlayers(players[0], players[1]);
+
+            ExecuteUpdatePlayersCallback();
         }
 
         private Player GetCurrentUserPlayer()
@@ -197,6 +191,17 @@ namespace BuscaminasDomain.GameRules
             Player p1 = players[0]; 
             Player p2 = players[1];
             return p1.Oust(p2);
+        }
+
+        private void ExecuteUpdatePlayersCallback()
+        {
+            Player p1 = players[0];
+            Player p2 = null;
+            if (players.Count == 2)
+            {
+                p2 = players[1];
+            }
+            listener.ShowPlayers(p1, p2);
         }
     }
 }

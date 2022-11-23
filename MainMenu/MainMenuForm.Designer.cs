@@ -44,6 +44,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.radioButtonEasy = new System.Windows.Forms.RadioButton();
             this.panelMultiplayer = new System.Windows.Forms.Panel();
+            this.contextMenuStripMpgRefresh = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.refrescarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.radioButtonOpenRooms = new System.Windows.Forms.RadioButton();
             this.radioButtonMpgInProgressGames = new System.Windows.Forms.RadioButton();
             this.button4 = new System.Windows.Forms.Button();
@@ -55,23 +57,21 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.panelSinglePlayerLoadNew = new System.Windows.Forms.Panel();
+            this.contextMenuStripRefrescarSPG = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.refrescarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReturnSpgMenu = new System.Windows.Forms.Label();
             this.btnSpgNewGame = new System.Windows.Forms.Button();
             this.btnSpgContinue = new System.Windows.Forms.Button();
             this.listBoxInProgressSpg = new System.Windows.Forms.ListBox();
-            this.contextMenuStripRefrescarSPG = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.refrescarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripMpgRefresh = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.refrescarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonStatistics = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.panelGameButton.SuspendLayout();
             this.panelDifficulty.SuspendLayout();
             this.panelMultiplayer.SuspendLayout();
+            this.contextMenuStripMpgRefresh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelSinglePlayerLoadNew.SuspendLayout();
             this.contextMenuStripRefrescarSPG.SuspendLayout();
-            this.contextMenuStripMpgRefresh.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -79,10 +79,10 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MINE-SWEEPER", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(223, 103);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(303, 104);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(360, 44);
+            this.label1.Size = new System.Drawing.Size(192, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscaminas";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -238,6 +238,20 @@
             this.panelMultiplayer.TabIndex = 7;
             this.panelMultiplayer.Visible = false;
             // 
+            // contextMenuStripMpgRefresh
+            // 
+            this.contextMenuStripMpgRefresh.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refrescarToolStripMenuItem1});
+            this.contextMenuStripMpgRefresh.Name = "contextMenuStripMpgRefresh";
+            this.contextMenuStripMpgRefresh.Size = new System.Drawing.Size(123, 26);
+            // 
+            // refrescarToolStripMenuItem1
+            // 
+            this.refrescarToolStripMenuItem1.Name = "refrescarToolStripMenuItem1";
+            this.refrescarToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.refrescarToolStripMenuItem1.Text = "Refrescar";
+            this.refrescarToolStripMenuItem1.Click += new System.EventHandler(this.refrescarToolStripMenuItem1_Click);
+            // 
             // radioButtonOpenRooms
             // 
             this.radioButtonOpenRooms.AutoSize = true;
@@ -357,6 +371,20 @@
             this.panelSinglePlayerLoadNew.TabIndex = 11;
             this.panelSinglePlayerLoadNew.Visible = false;
             // 
+            // contextMenuStripRefrescarSPG
+            // 
+            this.contextMenuStripRefrescarSPG.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refrescarToolStripMenuItem});
+            this.contextMenuStripRefrescarSPG.Name = "contextMenuStripRefrescarSPG";
+            this.contextMenuStripRefrescarSPG.Size = new System.Drawing.Size(123, 26);
+            // 
+            // refrescarToolStripMenuItem
+            // 
+            this.refrescarToolStripMenuItem.Name = "refrescarToolStripMenuItem";
+            this.refrescarToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.refrescarToolStripMenuItem.Text = "Refrescar";
+            this.refrescarToolStripMenuItem.Click += new System.EventHandler(this.refrescarToolStripMenuItem_Click);
+            // 
             // btnReturnSpgMenu
             // 
             this.btnReturnSpgMenu.Font = new System.Drawing.Font("DS-Digital", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -399,34 +427,6 @@
             this.listBoxInProgressSpg.Name = "listBoxInProgressSpg";
             this.listBoxInProgressSpg.Size = new System.Drawing.Size(228, 134);
             this.listBoxInProgressSpg.TabIndex = 0;
-            // 
-            // contextMenuStripRefrescarSPG
-            // 
-            this.contextMenuStripRefrescarSPG.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refrescarToolStripMenuItem});
-            this.contextMenuStripRefrescarSPG.Name = "contextMenuStripRefrescarSPG";
-            this.contextMenuStripRefrescarSPG.Size = new System.Drawing.Size(123, 26);
-            // 
-            // refrescarToolStripMenuItem
-            // 
-            this.refrescarToolStripMenuItem.Name = "refrescarToolStripMenuItem";
-            this.refrescarToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.refrescarToolStripMenuItem.Text = "Refrescar";
-            this.refrescarToolStripMenuItem.Click += new System.EventHandler(this.refrescarToolStripMenuItem_Click);
-            // 
-            // contextMenuStripMpgRefresh
-            // 
-            this.contextMenuStripMpgRefresh.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refrescarToolStripMenuItem1});
-            this.contextMenuStripMpgRefresh.Name = "contextMenuStripMpgRefresh";
-            this.contextMenuStripMpgRefresh.Size = new System.Drawing.Size(123, 26);
-            // 
-            // refrescarToolStripMenuItem1
-            // 
-            this.refrescarToolStripMenuItem1.Name = "refrescarToolStripMenuItem1";
-            this.refrescarToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
-            this.refrescarToolStripMenuItem1.Text = "Refrescar";
-            this.refrescarToolStripMenuItem1.Click += new System.EventHandler(this.refrescarToolStripMenuItem1_Click);
             // 
             // buttonStatistics
             // 
@@ -485,10 +485,10 @@
             this.panelDifficulty.PerformLayout();
             this.panelMultiplayer.ResumeLayout(false);
             this.panelMultiplayer.PerformLayout();
+            this.contextMenuStripMpgRefresh.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelSinglePlayerLoadNew.ResumeLayout(false);
             this.contextMenuStripRefrescarSPG.ResumeLayout(false);
-            this.contextMenuStripMpgRefresh.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

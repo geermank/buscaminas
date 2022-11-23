@@ -38,7 +38,7 @@ namespace BuscaminasDomain.Statistics
             {
                 var currentUserId = Authentication.GetInstance().UserId;
                 return (from BuscaminasBE.GameStatistics gs in gameStatistics
-                        where (((GameResult)gs.SinglePlayerGameResult) == GameResult.WIN) ||
+                        where (((GameResult)gs.SinglePlayerGameResult) == GameResult.LOST) ||
                         ((((GameResult)gs.MultiPlayerGameResult) == GameResult.WIN) && gs.Winner != currentUserId)
                         select gs).Count();
             }
